@@ -1,0 +1,20 @@
+query Header {
+  siteOptions {
+    acfHeader {
+      contacts {
+        url
+        text
+        fieldGroupName
+        icon {
+          altText
+          sourceUrl
+        }
+      }
+      logo {
+        altText
+        sourceUrl
+      }
+      title
+    }
+  }
+}

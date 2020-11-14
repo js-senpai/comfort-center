@@ -1,0 +1,6 @@
+# Storybook
+**/*.stories.js
+
+# Static files
+static/db.json
+db.json
