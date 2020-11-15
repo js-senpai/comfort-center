@@ -1,6 +1,6 @@
 <template>
     <div
-        class="global-hamburger"
+        class="header__top-hamburger"
         @click="toggleMenu()"
     >
         <div class="line line-1" />
@@ -8,7 +8,9 @@
         <div class="line line-3" />
     </div>
 </template>
-
+<style lang="sass">
+    @import "sass/hamburger"
+</style>
 <script>
 export default {
     methods: {
@@ -23,21 +25,3 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-.global-hamburger {
-    background-color: red;
-    height: 20px;
-    width: 20px;
-    padding: 20px;
-    position: fixed;
-    top: 20px;
-    right: 20px;
-
-    // Breakpoints
-    // @media #{$lt-tablet} {
-    //     .hamburger {
-    //         display: block;
-    //     }
-    // }
-}
-</style>

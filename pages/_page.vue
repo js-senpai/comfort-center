@@ -17,12 +17,8 @@ import _get from "lodash/get"
 
 // Queries
 import HOME from "~/gql/queries/Home"
-import ShortcodeSvg from "~/components/shortcode/Svg"
 
 export default {
-    components: {
-        ShortcodeSvg,
-    },
     async asyncData({ $graphql, route }) {
         const data = await $graphql.request(HOME, {
             uri: route.path,

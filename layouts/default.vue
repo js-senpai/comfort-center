@@ -12,22 +12,14 @@
         />
     </main>
 </template>
-<style lang="sass">
-    @import "../sass/main"
-</style>
 <script>
 // Helpers
 import _throttle from "lodash/throttle"
 import _kebabCase from "lodash/kebabCase"
 import { decodeHtmlEntities } from "~/utils/tools"
 
-// Components
-import siteHamburger from "~/components/global/Hamburger"
 
 export default {
-    components: {
-        siteHamburger,
-    },
     data() {
         let output = {
             winHeight: 0,

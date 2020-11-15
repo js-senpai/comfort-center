@@ -4,7 +4,6 @@ query Header {
       contacts {
         url
         text
-        fieldGroupName
         icon {
           altText
           sourceUrl

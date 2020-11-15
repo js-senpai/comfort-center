@@ -6,13 +6,13 @@
 // CSS vars
 :root {
     --color-white: #ffffff;
-    --color-black: #000000;
+    --color-black: $black;
     --color-loading: var(--color-black);
 
     --unit-100vh: 100vh;
     //--unit-gap: 40px;
 
-    --font-primary: sans-serif;
+    --font-primary: 'Roboto',sans-serif;
     //--font-secondary: serif;
 }
 

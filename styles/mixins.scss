@@ -11,3 +11,28 @@
     left: 0;
     top: 0;
 }
+@mixin yellowBtn(){
+    display: flex;
+    width: 155px;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    background-color: $yellow;
+    box-shadow: 0px 10px 20px #22628D;
+    cursor: pointer;
+    &:hover{
+        box-shadow: 0px 10px 20px #004473;
+    }
+    &:focus,
+    &:active{
+        color: $yellow-dark;
+    }
+}
+@mixin inputField(){
+    max-width: 343px;
+    display: block;
+    padding: 8px 15px;
+    height: 50px;
+    font-size: 14px;
+    line-height: 34px;
+}

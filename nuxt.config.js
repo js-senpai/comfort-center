@@ -133,6 +133,24 @@ export default {
      ** Build configuration
      */
     build: {
+        extractCSS: true,
+        /*Min all*/
+        html:{
+            minify:{
+                collapseBooleanAttributes: true,
+                decodeEntities: true,
+                minifyCSS: true,
+                minifyJS: true,
+                processConditionalComments: true,
+                removeEmptyAttributes: true,
+                removeRedundantAttributes: true,
+                trimCustomFragments: true,
+                useShortDoctype: true,
+                minifyURLs: true,
+                removeComments: true,
+                removeEmptyElements: true
+            }
+        },
         // This and the transpile code below fix an issue with the spread operator in Safari 10.
         babel: {
             plugins: ["@babel/plugin-proposal-object-rest-spread"],

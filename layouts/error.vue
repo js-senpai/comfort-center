@@ -31,9 +31,6 @@ export default {
     }
 }
 </script>
-<style lang="sass">
-    @import "../sass/main"
-</style>
 <style lang="scss">
 .section-404 {
     min-height: var(--unit-100vh);
