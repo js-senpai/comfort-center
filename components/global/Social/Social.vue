@@ -1,7 +1,7 @@
 <template>
     <ul class="social-list" >
         <li v-for="(item,index) in socials" class="social-list-item" :key="index">
-            <a :href="item.url">
+            <a :href="item.url" class="social-list-item__link">
                 <span class="social-list-item__icon" v-if="item.icon.sourceUrl !== ''">
                     <img :src="item.icon.sourceUrl" :alt="item.icon.altText" />
                 </span>

@@ -1,0 +1,9 @@
+query Footer {
+  footer {
+    acfFooter {
+      footerColumns {
+        text
+      }
+    }
+  }
+}

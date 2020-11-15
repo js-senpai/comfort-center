@@ -9,6 +9,7 @@
             keep-alive
             :keep-alive-props="{ include: ['WpMenu', 'WpSeo'] }"
         />
+        <Footer />
     </main>
 </template>
 <script>

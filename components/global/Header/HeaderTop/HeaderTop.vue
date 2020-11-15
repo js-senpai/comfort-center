@@ -30,7 +30,6 @@
         async fetch(){
             const data = await this.$graphql.request(HEADER_SITE)
             this.socials =  _get(data, "siteOptions.acfHeader.contacts", {})
-            console.log(this.socials)
         }
     }
 </script>
