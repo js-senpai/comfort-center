@@ -1,8 +1,5 @@
 <template>
     <main :class="classes">
-        <!-- This helps with SEO -->
-<!--        <wp-seo />-->
-
         <Header />
 
         <nuxt
@@ -10,6 +7,7 @@
             :keep-alive-props="{ include: ['WpMenu', 'WpSeo'] }"
         />
         <Footer />
+        <FormModal />
     </main>
 </template>
 <script>
@@ -17,9 +15,11 @@
 import _throttle from "lodash/throttle"
 import _kebabCase from "lodash/kebabCase"
 import { decodeHtmlEntities } from "~/utils/tools"
+import FormModal from "../components/global/FormModal/FormModal"
 
 
 export default {
+    components: {FormModal},
     data() {
         let output = {
             winHeight: 0,

@@ -1,14 +1,15 @@
 <template>
-    <section :class="classes">
-        <wp-image
-            class="image"
-            :image="parsedPage.featuredImage"
-        />
-        <wp-content
-            :html="parsedPage.encodedContent"
-            :enable-styles="true"
-        />
-    </section>
+    <div :class="classes">
+        <template v-if="!parsedPage.isFrontPage">
+            <div class="container wp-page">
+                <wp-content
+                        :html="parsedPage.encodedContent"
+                        :enable-styles="true"
+                        v-if="!parsedPage.isFrontPage"
+                />
+            </div>
+        </template>
+    </div>
 </template>
 
 <script>

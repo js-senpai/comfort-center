@@ -13,10 +13,10 @@
             v-if="isRelative && !isHash"
             :to="relativeUrl"
             class="menu-link link-internal"
-            @click.native="menuInteracted"
             :class="item.cssClasses?item.cssClasses:''"
+            @click.native="menuInteracted"
         >
-            <span class="menu-link-text">{{item.label}}</span>
+            <span class="menu-link-text">{{ item.label }}</span>
         </nuxt-link>
 
         <span

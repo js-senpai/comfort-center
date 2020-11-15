@@ -4,6 +4,7 @@
 query Home($uri: String!) {
     nodeByUri(uri: $uri) {
         ... on Page {
+            isFrontPage
             title
             encodedContent # Use this instead of content when using <wp-content>
             id

@@ -1,9 +1,16 @@
 @screen lg
   .header__bottom-menu
     @apply flex justify-center items-center
-    &.active
-      display: flex
+    &>.menu-item
+      a
+        @apply items-center
+        flex-direction: row
+      .menu-icon::before
+        margin-right: 10px
     &>.menu-item:not(:last-child)
       @apply mr-24
+      margin-bottom: 0
+    &.active
+      display: flex
   .header__bottom
     background-color: var(--color-grey-light)

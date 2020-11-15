@@ -1,0 +1,26 @@
+query FrontPage {
+  nodeByUri(uri: "/") {
+    ... on Page {
+      mainPage {
+        banner {
+          title
+          subtitle
+          services {
+            text
+            icon {
+              altText
+              sourceUrl
+            }
+          }
+          bg {
+             sourceUrl
+          }
+          contactForm {
+              subtitle
+              title
+          }
+        }
+      }
+    }
+  }
+}

@@ -9,39 +9,44 @@ body {
     font-size: 16px;
     color: var(--color-black);
     background-color: var(--color-white);
-    line-height: 45px;
     margin: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-feature-settings: "kern" 1;
     font-kerning: normal;
 }
+#__layout{
+    overflow: hidden;
+}
 ::selection {
     color: var(--color-white);
     background: var(--color-black);
 }
 h1{
-    font-size: 90px;
-    line-height: 90px;
+    font-size: 40px;
+    line-height: 45px;
+    font-family: 'DinPro',sans-serif;
 }
 h2{
-    font-size: 60px;
-    line-height: 70px;
+    font-size: 40px;
+    line-height: 45px;
 }
 h3{
-    font-size: 30px;
-    line-height: 40px;
+    font-size: 35px;
+    line-height: 34px;
 }
 h4{
+    font-size: 18px;
+    line-height: 46px;
+}
+h5{
     font-size: 18px;
     line-height: 28px;
 }
 h1,
 h2,
-h3,
-h4,
-h5 {
-    font-weight: 400;
+h3{
+    font-weight: 700;
 }
 a {
     color: var(--color-blue);
@@ -66,6 +71,13 @@ button {
     cursor: pointer;
     outline: none;
     margin: 0;
+}
+input,button{
+    outline: none;
+    color: var(--color-black);
+    &:hover,&:focus,&:active{
+        outline: none;
+    }
 }
 .title {
     .line {
@@ -166,3 +178,46 @@ button {
         }
     }
 }
+.contact-form__submit{
+  @include yellowBtn;
+}
+.contact-form{
+    background-color: var(--color-blue);
+}
+.contact-form__subtitle{
+    margin-bottom: 20px;
+}
+.contact-form__label{
+    display: block;
+    margin-bottom: 10px;
+}
+.contact-form__input{
+    @include inputField;
+}
+.contact-form__checkbox-container {
+  @apply flex justify-start items-center;
+}
+.contact-form__checkbox-wrapper {
+  @apply bg-white  w-6 h-6 flex flex-shrink-0 justify-center items-center mr-2;
+  cursor: pointer;
+}
+.contact-form__checkbox{
+  @apply opacity-0 absolute;
+  &:checked + svg {
+    display: block;
+  }
+}
+.contact-form__select-none {
+  font-size: 13px;
+  max-width: 183px;
+  a{
+    color: var(--color-white);
+    text-decoration-color: var(--color-white);
+  }
+}
+.contact-form__error{
+  font-size: 14px;
+  @apply text-red-500;
+}
+
+@import "media";

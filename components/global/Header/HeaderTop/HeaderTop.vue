@@ -6,7 +6,7 @@
                 <HeaderTitle />
             </div>
             <div class="header__top-right">
-                <Social :socials="socials" :is-column="true" class="header__top-socials hidden lg:flex" />
+                <Social :socials="socials"  class="header__top-socials hidden lg:flex" />
                 <Hamburger class="flex lg:hidden" />
             </div>
         </div>

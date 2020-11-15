@@ -21,13 +21,13 @@
 <script>
 export default {
     props: ["error"],
+    mounted() {
+        console.log(this.error)
+    },
     head() {
         return {
             title: `${this.error.statusCode} Error`
         }
-    },
-    mounted() {
-        console.log(this.error)
     }
 }
 </script>

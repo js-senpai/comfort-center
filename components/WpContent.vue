@@ -229,54 +229,54 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-.wp-content {
-    /deep/ {
-        .responsive-video {
-            position: relative;
+<!--<style lang="scss" scoped>-->
+<!--.wp-content {-->
+<!--    /deep/ {-->
+<!--        .responsive-video {-->
+<!--            position: relative;-->
 
-            iframe {
-                position: absolute;
-                top: 0;
-                left: 0;
-                height: 100%;
-                width: 100%;
-            }
-        }
-    }
+<!--            iframe {-->
+<!--                position: absolute;-->
+<!--                top: 0;-->
+<!--                left: 0;-->
+<!--                height: 100%;-->
+<!--                width: 100%;-->
+<!--            }-->
+<!--        }-->
+<!--    }-->
 
-    &.has-styles {
-        /deep/ {
-            .embed,
-            .tiktok-embed,
-            .twitter-tweet,
-            .instagram-media,
-            .fb_iframe_widget,
-            .fit-vid {
-                margin: 2em auto !important; // Wish we didn't have to do this, but some provides use inline margins
-                max-width: 1280px;
-                display: block;
-                text-align: center;
-            }
-            p {
-                max-width: 640px;
-                margin-left: auto;
-                margin-right: auto;
-            }
-            p:empty {
-                display: none;
-            }
-            .fit-vid {
-                max-width: 1800px;
-                margin: 2em auto;
-            }
-            img {
-                height: auto;
-                width: 100%;
-                max-width: 1800px;
-                margin: 2em auto;
-            }
-        }
-    }
-}
-</style>
+<!--    &.has-styles {-->
+<!--        /deep/ {-->
+<!--            .embed,-->
+<!--            .tiktok-embed,-->
+<!--            .twitter-tweet,-->
+<!--            .instagram-media,-->
+<!--            .fb_iframe_widget,-->
+<!--            .fit-vid {-->
+<!--                margin: 2em auto !important; // Wish we didn't have to do this, but some provides use inline margins-->
+<!--                max-width: 1280px;-->
+<!--                display: block;-->
+<!--                text-align: center;-->
+<!--            }-->
+<!--            p {-->
+<!--                max-width: 640px;-->
+<!--                margin-left: auto;-->
+<!--                margin-right: auto;-->
+<!--            }-->
+<!--            p:empty {-->
+<!--                display: none;-->
+<!--            }-->
+<!--            .fit-vid {-->
+<!--                max-width: 1800px;-->
+<!--                margin: 2em auto;-->
+<!--            }-->
+<!--            img {-->
+<!--                height: auto;-->
+<!--                width: 100%;-->
+<!--                max-width: 1800px;-->
+<!--                margin: 2em auto;-->
+<!--            }-->
+<!--        }-->
+<!--    }-->
+<!--}-->
+<!--</style>-->

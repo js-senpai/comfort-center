@@ -73,6 +73,8 @@ export default {
         // { src: "~/plugins/google-gtag.client.js", mode: "client" },
         { src: "~/plugins/web-font-loader.client.js", mode: "client" },
         //{ src: "~/plugins/ip-geolocate.js" },
+        { src: "~/plugins/vue-mask.js", mode: "client" },
+        { src: "~/plugins/validate.js" },
     ],
 
     /*
@@ -82,13 +84,15 @@ export default {
         "nuxt-graphql-request",
         "@nuxtjs/style-resources",
         "@nuxtjs/sitemap",
-        "nuxt-lazy-load"
+        "nuxt-lazy-load",
+        '@nuxtjs/axios'
     ],
 
     /*
      * Build modules
      */
-    buildModules: ["@nuxtjs/dotenv", "~/modules/sitemapRouteGenerator",'@nuxtjs/tailwindcss', '@aceforth/nuxt-optimized-images',],
+    buildModules: ["@nuxtjs/dotenv", "~/modules/sitemapRouteGenerator",'@nuxtjs/tailwindcss', '@aceforth/nuxt-optimized-images'
+    ],
     optimizedImages: {
         optimizeImages: true
     },
@@ -157,6 +161,7 @@ export default {
         },
         transpile: ["ky", "vuex"],
         extend(config, ctx) {
+
             // Includes the Compiler version of Vue.
             // If you don't use the <wp-content> component, then you can delete this safely.
             config.resolve.alias["vue$"] = "vue/dist/vue.esm.js"
