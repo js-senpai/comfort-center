@@ -23,84 +23,108 @@
         </div>
         <div class="banner__bottom">
             <div class="container banner__bottom-container">
-                <ul
-                    v-if="bannerData.services"
-                    class="banner__services-list"
-                >
-                    <li
-                        v-for="(item,index) in bannerData.services"
-                        :key="index"
-                        class="banner__services-list-item"
+                <u-animate-container class="animation">
+                    <u-animate
+                            name="fadeInLeft"
+                            delay="0s"
+                            duration="1s"
+                            :iteration="1"
+                            :offset="0"
+                            animateClass="animated"
+                            :begin="false"
                     >
-                        <div class="banner__services-list-item__icon">
-                            <img
-                                :src="item.icon.sourceUrl"
-                                :alt="item.icon.altText"
-                            >
-                        </div>
-                        <div class="banner__services-list__text">
-                            {{ item.text }}
-                        </div>
-                    </li>
-                </ul>
-                <div
-                    v-if="bannerData.contactForm"
-                    class="contact-form banner__bottom-contact-form"
-                >
-                    <div class="banner___bottom-contact-form-wrapper">
-                        <h3
-                                v-if="bannerData.contactForm.title"
-                                class="contact-form__title banner__bottom-contact-form-title"
+                        <ul
+                                v-if="bannerData.services"
+                                class="banner__services-list"
                         >
-                            {{ bannerData.contactForm.title }}
-                        </h3>
+                            <li
+                                    v-for="(item,index) in bannerData.services"
+                                    :key="index"
+                                    class="banner__services-list-item"
+                            >
+                                <div class="banner__services-list-item__icon">
+                                    <img
+                                            :src="item.icon.sourceUrl"
+                                            :alt="item.icon.altText"
+                                    >
+                                </div>
+                                <div class="banner__services-list__text">
+                                    {{ item.text }}
+                                </div>
+                            </li>
+                        </ul>
+                    </u-animate>
+                </u-animate-container>
+                <u-animate-container>
+                    <u-animate
+                            name="fadeIn"
+                            delay="0s"
+                            duration="1s"
+                            :iteration="1"
+                            :offset="0"
+                            animateClass="animated"
+                            :begin="false"
+                    >
                         <div
-                                v-if="bannerData.contactForm.subtitle"
-                                class="contact-form__subtitle banner__bottom-contact-form-subtitle"
-                        >{{ bannerData.contactForm.subtitle }}</div>
-                        <form class="contact-form__container banner__bottom-contact-form__container" @submit="sendForm($event)">
-                            <div class="contact-form__item">
-                                <label class="contact-form__label">Имя</label>
-                                <input
-                                        type="text"
-                                        class="contact-form__input name"
-                                        placeholder="Введите ваше имя"
-                                        v-model="$v.name.$model"
-                                        required
+                                v-if="bannerData.contactForm"
+                                class="contact-form banner__bottom-contact-form"
+                        >
+                            <div class="banner___bottom-contact-form-wrapper">
+                                <h3
+                                        v-if="bannerData.contactForm.title"
+                                        class="contact-form__title banner__bottom-contact-form-title"
                                 >
-                                <span class="contact-form__error" v-show="!$v.name.checkName">Введите корректное имя</span>
-                            </div>
-                            <div class="contact-form__item">
-                                <label
-                                        class="contact-form__label">
-                                    Телефон
-                                </label>
-                                <input
-                                        v-mask="'+7(###)###-##-##'"
-                                        v-model="$v.tel.$model"
-                                        type="tel"
-                                        class="contact-form__input tel"
-                                        placeholder="+7(__)__-__-__"
-                                        required
-                                />
-                                <span class="contact-form__error" v-show="!$v.tel.minLength">Введите корректный номер телефона</span>
-                            </div>
-                            <div class="contact-form__item">
-                                <label class="contact-form__checkbox-container">
-                                    <div class="contact-form__checkbox-wrapper focus-within:border-blue-500">
-                                        <input type="checkbox" class="contact-form__checkbox" required>
-                                        <svg class="fill-current hidden w-4 h-4 text-green-500 pointer-events-none" viewBox="0 0 20 20"><path d="M0 11l2-2 5 5L18 3l2 2L7 18z"/></svg>
+                                    {{ bannerData.contactForm.title }}
+                                </h3>
+                                <div
+                                        v-if="bannerData.contactForm.subtitle"
+                                        class="contact-form__subtitle banner__bottom-contact-form-subtitle"
+                                >{{ bannerData.contactForm.subtitle }}</div>
+                                <form class="contact-form__container banner__bottom-contact-form__container" @submit="sendForm($event)">
+                                    <div class="contact-form__item">
+                                        <label class="contact-form__label">Имя</label>
+                                        <input
+                                                type="text"
+                                                class="contact-form__input name"
+                                                placeholder="Введите ваше имя"
+                                                v-model="$v.name.$model"
+                                                required
+                                        >
+                                        <span class="contact-form__error" v-show="!$v.name.checkName">Введите корректное имя</span>
                                     </div>
-                                    <div class="contact-form__select-none">Я принимаю <a href="/policy.pdf" target="_blank">соглашение сайта</a> об обработке персональных данных</div>
-                                </label>
+                                    <div class="contact-form__item">
+                                        <label
+                                                class="contact-form__label">
+                                            Телефон
+                                        </label>
+                                        <input
+                                                v-mask="'+7(###)###-##-##'"
+                                                v-model="$v.tel.$model"
+                                                type="tel"
+                                                class="contact-form__input tel"
+                                                placeholder="+7(__)__-__-__"
+                                                required
+                                        />
+                                        <span class="contact-form__error" v-show="!$v.tel.minLength">Введите корректный номер телефона</span>
+                                    </div>
+                                    <div class="contact-form__item">
+                                        <label class="contact-form__checkbox-container">
+                                            <div class="contact-form__checkbox-wrapper focus-within:border-blue-500">
+                                                <input type="checkbox" class="contact-form__checkbox" required>
+                                                <svg class="fill-current hidden w-4 h-4 text-green-500 pointer-events-none" viewBox="0 0 20 20"><path d="M0 11l2-2 5 5L18 3l2 2L7 18z"/></svg>
+                                            </div>
+                                            <div class="contact-form__select-none">Я принимаю <a href="/policy.pdf" target="_blank">соглашение сайта</a> об обработке персональных данных</div>
+                                        </label>
+                                    </div>
+                                    <div class="contact-form__item">
+                                        <button type="submit" class="contact-form__submit">Отправить</button>
+                                    </div>
+                                    <span class="contact-form__error" v-show="error">Произошла ошибка во время отправки формы.{{ errorText }}</span>
+                                </form>
                             </div>
-                            <div class="contact-form__item">
-                                <button type="submit" class="contact-form__submit">Отправить</button>
-                            </div>
-                            <span class="contact-form__error" v-show="error">Произошла ошибка во время отправки формы.{{ errorText }}</span>
-                        </form>
-                    </div>
-                </div>
+                        </div>
+                    </u-animate>
+                </u-animate-container>
             </div>
         </div>
     </section>
@@ -116,7 +140,8 @@ import _get from "lodash/get"
 import FRONT_PAGE from "~/gql/queries/FrontPage"
 //Validation
 import { minLength } from 'vuelidate/lib/validators'
-const checkName = (value) => /\D/g.test(value)
+import {checkName,toFormData} from "../../../../helpers/formHelper"
+
 export default {
     async fetch(){
         const data = await this.$graphql.request(FRONT_PAGE)
@@ -144,15 +169,7 @@ export default {
         async sendForm(e){
             e.preventDefault()
             try {
-                const emailBody = {
-                    "name": this.name,
-                    "tel": this.tel
-                }
-                const form = new FormData()
-                for (const field in emailBody) {
-                    form.append(field, emailBody[field]);
-                }
-                const response = await this.$axios.$post(`${process.env.MAIN_URL}93/feedback`,form)
+                const response = await this.$axios.$post(`${process.env.MAIN_URL}93/feedback`,toFormData({name:this.name,tel:this.tel}))
                 if(response.status !== "mail_sent"){
                     this.errorText = response.message
                 } else {

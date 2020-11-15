@@ -75,6 +75,7 @@ export default {
         //{ src: "~/plugins/ip-geolocate.js" },
         { src: "~/plugins/vue-mask.js", mode: "client" },
         { src: "~/plugins/validate.js" },
+        { src: "~/plugins/wow.js" },
     ],
 
     /*

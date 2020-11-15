@@ -20,6 +20,16 @@ query FrontPage {
               title
           }
         }
+            gallerySection {
+              title
+              galleryServices {
+                title
+                img {
+                  altText
+                  sourceUrl
+                }
+              }
+            }
       }
     }
   }
