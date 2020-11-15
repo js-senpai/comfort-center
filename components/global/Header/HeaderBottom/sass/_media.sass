@@ -1,0 +1,9 @@
+@screen lg
+  .header__bottom-menu
+    @apply flex justify-center items-center
+    &.active
+      display: flex
+    &>.menu-item:not(:last-child)
+      @apply mr-24
+  .header__bottom
+    background-color: var(--color-grey-light)

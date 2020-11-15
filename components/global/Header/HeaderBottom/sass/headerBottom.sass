@@ -1,0 +1,28 @@
+.header__bottom
+  position: relative
+.header__bottom-menu
+  padding: 20px 0
+  display: none
+  &.active
+    display: block
+  &>.menu-item
+    a
+      @apply flex items-center
+    .menu-icon::before
+      content: ''
+      height: 15px
+      width: 15px
+      margin-right: 10px
+      background-repeat: no-repeat
+      background-size: 100%
+      background-position: center
+      display: block
+    .menu-icon-1::before
+      background-image: url("~static/images/header/menu/item-1.svg")
+    .menu-icon-2::before
+      background-image: url("~static/images/header/menu/item-2.svg")
+    .menu-icon-3::before
+      background-image: url("~static/images/header/menu/item-3.svg")
+    .menu-icon-4::before
+      background-image: url("~static/images/header/menu/item-4.svg")
+@import "media"

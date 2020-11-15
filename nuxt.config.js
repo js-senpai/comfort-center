@@ -176,14 +176,14 @@ export default {
                 test: /\.svg$/,
                 use: [
                     "babel-loader",
-                    {
-                        loader: "vue-svg-loader",
-                        options: {
-                            svgo: {
-                                plugins: [{ removeViewBox: false }],
-                            },
-                        },
-                    },
+                    // {
+                    //     loader: "vue-svg-loader",
+                    //     options: {
+                    //         svgo: {
+                    //             plugins: [{ removeViewBox: false }],
+                    //         },
+                    //     },
+                    // },
                 ],
             })
         },

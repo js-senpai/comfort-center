@@ -70,7 +70,7 @@ button {
     background: rgba(0, 0, 0, 0.3);
 }
 .container{
-    @apply px-3
+    @apply px-3 mx-auto;
 }
 // Z-Indexs
 .page {

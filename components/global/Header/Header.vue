@@ -1,7 +1,10 @@
 <template>
     <header class="header">
-        <div class="container mx-auto">
-            <HeaderTop />
+        <div class="header-overlay" :class="{active:this.$store.state.menuOpened}">
+            <div class="header-container">
+                <HeaderTop />
+                <HeaderBottom />
+            </div>
         </div>
     </header>
 </template>

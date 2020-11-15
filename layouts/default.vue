@@ -4,7 +4,6 @@
 <!--        <wp-seo />-->
 
         <Header />
-        <wp-menu location="MAIN_MENU" />
 
         <nuxt
             keep-alive

@@ -11,7 +11,8 @@
             class="menu-item"
             :item="item"
             @menu-interacted="menuInteracted"
-        />
+        >
+        </wp-menu-item>
 
         <slot name="after" />
     </ul>

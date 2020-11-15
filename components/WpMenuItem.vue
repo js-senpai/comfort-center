@@ -14,8 +14,10 @@
             :to="relativeUrl"
             class="menu-link link-internal"
             @click.native="menuInteracted"
-            v-html="item.label"
-        />
+            :class="item.cssClasses?item.cssClasses:''"
+        >
+            <span class="menu-link-text">{{item.label}}</span>
+        </nuxt-link>
 
         <span
             v-if="isHash"
@@ -91,6 +93,7 @@ export default {
     methods: {
         menuInteracted(event) {
             this.$emit("menu-interacted", event)
+            this.$store.commit("SET_MENU", false)
         },
     },
 }

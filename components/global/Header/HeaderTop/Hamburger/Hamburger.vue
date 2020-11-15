@@ -1,6 +1,7 @@
 <template>
     <div
         class="header__top-hamburger"
+        :class="{active:this.$store.state.menuOpened}"
         @click="toggleMenu()"
     >
         <div class="line line-1" />

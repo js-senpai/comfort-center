@@ -1,0 +1,23 @@
+.header__top-hamburger
+  @apply ml-2 p-6
+  max-width: 60px
+  background-color: var(--color-black)
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  .line
+    background-color: var(--color-white)
+    display: block
+    width: 24px
+    height: 3px
+    transition: all 500ms ease-in-out
+  .line:not(:last-child)
+    margin-bottom: 4px
+  &.active
+    .line-1
+      transform: rotate(-135deg)
+    .line-3
+      transform: rotate(135deg)
+      margin-top: -14px
+    .line-2
+      opacity: 0

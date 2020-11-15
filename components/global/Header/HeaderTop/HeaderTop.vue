@@ -1,12 +1,14 @@
 <template>
     <div class="header__top">
-        <div class="header__top-left">
-            <Logo />
-            <HeaderTitle />
-        </div>
-        <div class="header__top-right">
-           <Social :socials="socials" :is-column="true" class="header__top-socials hidden lg:flex" />
-           <Hamburger class="block lg:hidden" />
+        <div class="container header__top-container">
+            <div class="header__top-left">
+                <Logo />
+                <HeaderTitle />
+            </div>
+            <div class="header__top-right">
+                <Social :socials="socials" :is-column="true" class="header__top-socials hidden lg:flex" />
+                <Hamburger class="flex lg:hidden" />
+            </div>
         </div>
     </div>
 </template>
