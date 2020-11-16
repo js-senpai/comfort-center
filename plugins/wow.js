@@ -1,5 +1,4 @@
 import Vue from 'vue'
-import VueWow from 'vue-wow'
+import VueAnimate from 'vue-animate-scroll'
 
-// mount with global
-Vue.use(VueWow)
+Vue.use(VueAnimate)

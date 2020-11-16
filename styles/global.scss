@@ -22,9 +22,15 @@ body {
     color: var(--color-white);
     background: var(--color-black);
 }
+.title-section{
+    margin-bottom: 35px;
+    width: 80%;
+}
 h1{
     font-size: 40px;
     line-height: 45px;
+}
+h1,h2,h3{
     font-family: 'DinPro',sans-serif;
 }
 h2{

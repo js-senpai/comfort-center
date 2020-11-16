@@ -30,6 +30,45 @@ query FrontPage {
                 }
               }
             }
+        services {
+          title
+          titileForm
+          subtitle
+          infoText
+          img {
+            altText
+            sourceUrl
+          }
+          worktypes {
+            title
+            img {
+              altText
+              sourceUrl
+            }
+          }
+          tablePrice {
+            tableList {
+              price
+              name
+            }
+            value
+            name
+          }
+          galleryList {
+            img {
+              altText
+              sourceUrl
+            }
+          }
+          servicesList {
+            subtitle
+            title
+            img {
+              altText
+              sourceUrl
+            }
+          }
+        }
       }
     }
   }

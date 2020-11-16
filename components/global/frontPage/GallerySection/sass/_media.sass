@@ -1,0 +1,30 @@
+@screen lg
+  .gallery-section
+    padding-top: 35px
+  .gallery-section__gallery-list-img
+    display: block
+    position: relative
+    &::before
+      content: ''
+      display: block
+      width: 60px
+      height: 60px
+      position: absolute
+      top: -5px
+      right: -4px
+      background: center/100% url("~static/images/installation-obj/border.svg") no-repeat
+  .gallery-section__gallery-list
+    display: grid
+    grid-template-columns: repeat(3,1fr)
+    grid-gap: 30px
+    grid-row-gap: 40px
+    img
+      width: 100%
+      height: 100%
+      object-fit: cover
+      object-position: center
+  .gallery-section__gallery-list-title
+    font-size: 18px
+    position: absolute
+    bottom: -28px
+    left: -14px

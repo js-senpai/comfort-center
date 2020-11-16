@@ -3,7 +3,7 @@
         class="banner"
         :style="{backgroundImage: `url(${bannerData.bg.sourceUrl})`}"
     >
-        <div class="banner__top">
+        <div class="banner__top"  v-animate.repeat="'fadeInLeft'">
             <div class="container">
                 <div class="banner__top-row">
                     <h1
@@ -23,19 +23,10 @@
         </div>
         <div class="banner__bottom">
             <div class="container banner__bottom-container">
-                <u-animate-container class="animation">
-                    <u-animate
-                            name="fadeInLeft"
-                            delay="0s"
-                            duration="1s"
-                            :iteration="1"
-                            :offset="0"
-                            animateClass="animated"
-                            :begin="false"
-                    >
                         <ul
                                 v-if="bannerData.services"
                                 class="banner__services-list"
+                                v-animate.repeat="'fadeInLeft'"
                         >
                             <li
                                     v-for="(item,index) in bannerData.services"
@@ -53,21 +44,10 @@
                                 </div>
                             </li>
                         </ul>
-                    </u-animate>
-                </u-animate-container>
-                <u-animate-container>
-                    <u-animate
-                            name="fadeIn"
-                            delay="0s"
-                            duration="1s"
-                            :iteration="1"
-                            :offset="0"
-                            animateClass="animated"
-                            :begin="false"
-                    >
                         <div
                                 v-if="bannerData.contactForm"
                                 class="contact-form banner__bottom-contact-form"
+                                v-animate.repeat="'fadeInRight'"
                         >
                             <div class="banner___bottom-contact-form-wrapper">
                                 <h3
@@ -123,8 +103,6 @@
                                 </form>
                             </div>
                         </div>
-                    </u-animate>
-                </u-animate-container>
             </div>
         </div>
     </section>
