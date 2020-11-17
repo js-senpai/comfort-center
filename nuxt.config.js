@@ -47,6 +47,7 @@ export default {
      ** Global CSS
      */
     css: [
+        "vue-slick-carousel/dist/vue-slick-carousel.css",
         "~/styles/css-variables.scss",
         "~/styles/global.scss",
         "~/styles/transitions.scss",
@@ -78,6 +79,7 @@ export default {
         { src: "~/plugins/vue-mask.js", mode: "client" },
         { src: "~/plugins/validate.js" },
         { src: "~/plugins/wow.js" },
+        { src: "~/plugins/slider.js" }
     ],
 
     /*

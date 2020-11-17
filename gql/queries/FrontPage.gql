@@ -2,6 +2,32 @@ query FrontPage {
   nodeByUri(uri: "/") {
     ... on Page {
       mainPage {
+        sliderTabContainer {
+          title
+          sliderTab {
+            name
+            slider {
+              deadline
+              title
+              infoList {
+                title
+                infoListItem {
+                  text
+                }
+              }
+              img {
+                altText
+                sourceUrl
+              }
+              gallery {
+                img {
+                  altText
+                  sourceUrl
+                }
+              }
+            }
+          }
+        }
         banner {
           title
           subtitle

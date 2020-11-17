@@ -1,7 +1,7 @@
 <template>
     <section
         class="banner"
-        :style="{backgroundImage: `url(${bannerData.bg.sourceUrl})`}"
+        :style="{backgroundImage: `url(${bannerData.bg?bannerData.bg.sourceUrl:null})`}"
     >
         <div class="banner__top"  v-animate.repeat="'fadeInLeft'">
             <div class="container">
@@ -127,7 +127,7 @@ export default {
     },
     data(){
         return {
-            bannerData: null,
+            bannerData: {},
             name: null,
             tel: null,
             error: false,
