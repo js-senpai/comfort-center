@@ -225,5 +225,29 @@ input,button{
   font-size: 14px;
   @apply text-red-500;
 }
-
+.contact-form__file-input{
+    display: none;
+}
+.contact-form__file{
+    cursor: pointer;
+    background-color: var(--color-white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 258px;
+    width: 100%;
+    height: 50px;
+    padding: 0 25px;
+    &::before{
+        content: '';
+        width: 11px;
+        height: 23px;
+        display: block;
+        background: center/100% url('~static/images/icons/file-blue.svg') no-repeat;
+        margin-right: 10px;
+    }
+}
+.contact-form__file.done::before{
+    background-image: url('~static/images/icons/file-yellow.svg');
+}
 @import "media";

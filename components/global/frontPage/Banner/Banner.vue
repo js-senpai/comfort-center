@@ -150,8 +150,10 @@ export default {
                 const response = await this.$axios.$post(`${process.env.MAIN_URL}93/feedback`,toFormData({name:this.name,tel:this.tel}))
                 if(response.status !== "mail_sent"){
                     this.errorText = response.message
+                    this.error = true
                 } else {
                     this.TOGGLE_MODAL({enable: true, message: response.message})
+                    this.error = false
                 }
                 this.name = null
                 this.tel = null

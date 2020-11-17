@@ -4,6 +4,7 @@
    <GallerySection />
    <ServicesBlock
       v-for="(item,index) in services"
+      :id="`service-${index+1}`"
       :key="index"
       :title="item.title"
       :subtitle="item.subtitle"

@@ -88,7 +88,8 @@ export default {
         "@nuxtjs/style-resources",
         "@nuxtjs/sitemap",
         "nuxt-lazy-load",
-        '@nuxtjs/axios',
+        "@nuxtjs/axios",
+        ['vue-scrollto/nuxt', { duration: 1000 }]
     ],
 
     /*

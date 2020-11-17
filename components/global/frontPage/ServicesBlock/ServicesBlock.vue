@@ -1,7 +1,7 @@
 <template>
     <section class="service-section">
             <div class="service-section__top">
-                <div class="container service-section-container">
+                <div class="container service-section-container service-section-container-top">
                     <div class="service-section__top-left" v-animate.repeat="'fadeInLeft'">
                         <h2 class="title-section service-section__title" v-if="title">{{ title }}</h2>
                         <div class="subtitle-section service-section__subtitle" v-if="subtitle">{{ subtitle }}</div>
@@ -23,17 +23,19 @@
             </div>
             <div class="service-section__bottom">
                 <div class="container service-section-container">
-                    <ul class="service-section__bottom-service-list" v-if="serviceList" v-animate.repeat="'fadeInLeft'">
-                        <li class="service-section__bottom-service-list-item" v-for="(item,index) in serviceList" :key="index">
-                            <div class="service-section__bottom-service-list-img" v-if="item.img">
-                                <img :src="item.img.sourceUrl" :alt="item.img.altText" />
-                            </div>
-                            <div class="service-section__bottom-service-list-title" v-if="item.title">{{ item.title }}</div>
-                            <div class="service-section__bottom-service-list-subtitle" v-if="item.subtitle">{{ item.subtitle }}</div>
-                        </li>
-                        <li class="service-section__bottom-service-list-item empty">
-                        </li>
-                    </ul>
+                    <div class="service-section-container-bottom">
+                        <ul class="service-section__bottom-service-list" v-if="serviceList" v-animate.repeat="'fadeInLeft'">
+                            <li class="service-section__bottom-service-list-item" v-for="(item,index) in serviceList" :key="index">
+                                <div class="service-section__bottom-service-list-img" v-if="item.img">
+                                    <img :src="item.img.sourceUrl" :alt="item.img.altText" />
+                                </div>
+                                <div class="service-section__bottom-service-list-title" v-if="item.title">{{ item.title }}</div>
+                                <div class="service-section__bottom-service-list-subtitle" v-if="item.subtitle">{{ item.subtitle }}</div>
+                            </li>
+                            <li class="service-section__bottom-service-list-item empty">
+                            </li>
+                        </ul>
+                    </div>
                     <ul class="service-section__bottom-gallery" v-if="galleryList" v-animate.repeat="'fadeInLeft'">
                         <li class="service-section__bottom-gallery-item" v-for="(item,index) in galleryList" :key="index">
                             <img :src="item.img.sourceUrl" :alt="item.img.altText" />
@@ -64,15 +66,19 @@
         <div class="service-section__form" v-if="titleForm" v-animate.repeat="'fadeInRight'">
             <div class="container service-section__form-container">
                  <h3 class="service-section__form-title">{{ titleForm }}</h3>
-                <form  class="service-section__form">
+                <form  class="service-section__form-block" @submit="sendForm($event)">
                     <div class="service-section__form-item">
-                        <input type="file" class="service-section__form-file-input">
-                        <div class="service-section__form-file">Прикрепить проект смету</div>
+                        <label class="contact-form__file service-section__form-file" :class="{done: file !== null}">
+                            <input type="file"  ref="file" @change="getFile()" class="contact-form__file-input service-section__form-file-input" required>
+                            <span class="contact-form__file-input-text service-section__form-file-input-text">Прикрепить проект смету</span>
+                        </label>
+                        <span class="contact-form__file-done" v-show="file !== null">Файл успешно загружен</span>
                     </div>
                     <div class="service-section__form-item">
                         <button type="submit" class="contact-form__submit">Отправить</button>
                     </div>
                 </form>
+                <span class="contact-form__error service-section__form-error" v-show="error">{{errorText}}</span>
             </div>
         </div>
     </section>
@@ -81,6 +87,8 @@
     @import "sass/serviceBlock"
 </style>
 <script>
+    import { mapMutations } from 'vuex'
+    import { toFormData } from "../../../../helpers/formHelper"
     export default {
         props: {
             title: {
@@ -119,6 +127,42 @@
                 type: String,
                 required: true
             }
+        },
+        data(){
+            return {
+                file: null,
+                errorText: '',
+                error: false
+            }
+        },
+        methods: {
+            getFile(){
+                this.file = this.$refs.file.files[0]
+                console.log(this.file)
+            },
+            /* Отправка формы */
+            async sendForm(e){
+                e.preventDefault()
+                try {
+                    const response = await this.$axios.$post(`${process.env.MAIN_URL}178/feedback`,toFormData({yourFile:this.file}))
+                    if(response.status !== "mail_sent"){
+                        this.errorText = response.message
+                        this.error = true
+                    } else {
+                        this.TOGGLE_MODAL({enable: true, message: response.message})
+                        this.error = false
+                    }
+                    console.log(response)
+                    this.file = null
+                } catch (e) {
+                    console.log(e)
+                    this.error = true
+                }
+            },
+            // Модальное окно подтверждения
+            ...mapMutations({
+                TOGGLE_MODAL: 'formModal/TOGGLE_MODAL'
+            })
         }
     }
 </script>
