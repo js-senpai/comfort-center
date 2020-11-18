@@ -113,11 +113,14 @@
   display: flex
   flex-direction: column
   align-items: center
+  background-color: var(--color-blue)
 .service-section__form-container
   background-color: var(--color-blue)
   text-align: center
   padding-top: 40px
   padding-bottom: 40px
+  &.border-dec::before
+    display: none
 .service-section__form-title
   text-align: center
   color: var(--color-white)

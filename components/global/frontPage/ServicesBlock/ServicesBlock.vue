@@ -64,7 +64,7 @@
                 </div>
             </div>
         <div class="service-section__form" v-if="titleForm" v-animate.repeat="'fadeInRight'">
-            <div class="container service-section__form-container">
+            <div class="container service-section__form-container border-dec">
                  <h3 class="service-section__form-title">{{ titleForm }}</h3>
                 <form  class="service-section__form-block" @submit="sendForm($event)">
                     <div class="service-section__form-item">
@@ -72,13 +72,13 @@
                             <input type="file"  ref="file" @change="getFile()" class="contact-form__file-input service-section__form-file-input" required>
                             <span class="contact-form__file-input-text service-section__form-file-input-text">Прикрепить проект смету</span>
                         </label>
-                        <span class="contact-form__file-done" v-show="file !== null">Файл успешно загружен</span>
+                        <span class="contact-form__file-done" v-if="file !== null">Файл успешно загружен</span>
                     </div>
                     <div class="service-section__form-item">
                         <button type="submit" class="contact-form__submit">Отправить</button>
                     </div>
                 </form>
-                <span class="contact-form__error service-section__form-error" v-show="error">{{errorText}}</span>
+                <span class="contact-form__error service-section__form-error" v-if="error">{{errorText}}</span>
             </div>
         </div>
     </section>

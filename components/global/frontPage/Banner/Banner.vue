@@ -3,7 +3,7 @@
         class="banner"
         :style="{backgroundImage: `url(${bannerData.bg?bannerData.bg.sourceUrl:null})`}"
     >
-        <div class="banner__top"  v-animate.repeat="'fadeInLeft'">
+        <div v-animate.repeat="'fadeInLeft'"  class="banner__top">
             <div class="container">
                 <div class="banner__top-row">
                     <h1
@@ -25,8 +25,8 @@
             <div class="container banner__bottom-container">
                         <ul
                                 v-if="bannerData.services"
-                                class="banner__services-list"
                                 v-animate.repeat="'fadeInLeft'"
+                                class="banner__services-list"
                         >
                             <li
                                     v-for="(item,index) in bannerData.services"
@@ -46,10 +46,10 @@
                         </ul>
                         <div
                                 v-if="bannerData.contactForm"
-                                class="contact-form banner__bottom-contact-form"
                                 v-animate.repeat="'fadeInRight'"
+                                class="contact-form banner__bottom-contact-form"
                         >
-                            <div class="banner___bottom-contact-form-wrapper">
+                            <div class="banner___bottom-contact-form-wrapper border-dec">
                                 <h3
                                         v-if="bannerData.contactForm.title"
                                         class="contact-form__title banner__bottom-contact-form-title"
@@ -70,7 +70,7 @@
                                                 v-model="$v.name.$model"
                                                 required
                                         >
-                                        <span class="contact-form__error" v-show="!$v.name.checkName">Введите корректное имя</span>
+                                        <span class="contact-form__error" v-if="!$v.name.checkName">Введите корректное имя</span>
                                     </div>
                                     <div class="contact-form__item">
                                         <label
@@ -85,7 +85,7 @@
                                                 placeholder="+7(__)__-__-__"
                                                 required
                                         />
-                                        <span class="contact-form__error" v-show="!$v.tel.minLength">Введите корректный номер телефона</span>
+                                        <span class="contact-form__error" v-if="!$v.tel.minLength">Введите корректный номер телефона</span>
                                     </div>
                                     <div class="contact-form__item">
                                         <label class="contact-form__checkbox-container">
@@ -99,7 +99,7 @@
                                     <div class="contact-form__item">
                                         <button type="submit" class="contact-form__submit">Отправить</button>
                                     </div>
-                                    <span class="contact-form__error" v-show="error">Произошла ошибка во время отправки формы.{{ errorText }}</span>
+                                    <span class="contact-form__error" v-if="error">Произошла ошибка во время отправки формы.{{ errorText }}</span>
                                 </form>
                             </div>
                         </div>

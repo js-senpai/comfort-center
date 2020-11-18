@@ -16,6 +16,7 @@
       :infoText="item.infoText"
       :titleForm="item.titileForm"
    />
+   <ServiceSlider />
  </div>
 </template>
 <script>

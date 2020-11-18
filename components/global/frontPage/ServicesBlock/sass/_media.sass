@@ -82,3 +82,10 @@
       background: linear-gradient(to right,var(--color-grey-light) 50%,var(--color-blue) 50%)
   .contact-form__file-done
     bottom: -20px
+  .service-section__form-container.border-dec::before
+    display: block
+  .service-section:nth-child(odd)
+    .service-section__form-container.border-dec::before
+      right: -5px
+      left: inherit
+      transform: rotate(90deg)

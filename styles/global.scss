@@ -234,10 +234,10 @@ input,button{
     display: flex;
     justify-content: center;
     align-items: center;
-    max-width: 258px;
+    max-width: 235px;
     width: 100%;
     height: 50px;
-    padding: 0 25px;
+    padding: 0 15px;
     &::before{
         content: '';
         width: 11px;
@@ -249,5 +249,17 @@ input,button{
 }
 .contact-form__file.done::before{
     background-image: url('~static/images/icons/file-yellow.svg');
+}
+.border-dec{
+    position: relative;
+    &::before{
+        content: "";
+        background: top left/100% url('~static/images/icons/border.svg')  no-repeat;
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        top: -5px;
+        left: -5px;
+    }
 }
 @import "media";
