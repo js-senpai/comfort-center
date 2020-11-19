@@ -1,8 +1,8 @@
 <template>
     <section class="gallery-section">
         <div class="container gallery-section___container">
-            <h2 class="title-section gallery-section___title" v-animate.repeat="'fadeInLeft'" v-if="galleryData.title">{{ galleryData.title }}</h2>
-            <ul class="gallery-section__gallery-list" v-if="galleryData.galleryServices">
+            <h2 class="title-section gallery-section___title" v-animate.repeat="'fadeInLeft'" v-show="galleryData.title">{{ galleryData.title }}</h2>
+            <ul class="gallery-section__gallery-list" v-show="galleryData.galleryServices">
                 <li class="gallery-section__gallery-list-item" v-for="(item,index) in galleryData.galleryServices" :key="index"  v-animate.repeat="'fadeInLeft'">
                     <div class="gallery-section__gallery-list-img">
                         <img :src="item.img.sourceUrl" :alt="item.img.altText">

@@ -1,11 +1,11 @@
 <template>
     <div :class="classes">
-        <template v-if="!parsedPage.isFrontPage">
+        <template v-show="!parsedPage.isFrontPage">
             <div class="container wp-page">
                 <wp-content
                         :html="parsedPage.encodedContent"
                         :enable-styles="true"
-                        v-if="!parsedPage.isFrontPage"
+                        v-show="!parsedPage.isFrontPage"
                 />
             </div>
         </template>

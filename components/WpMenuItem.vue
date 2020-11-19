@@ -1,7 +1,7 @@
 <template>
     <li :class="classes">
         <a
-            v-if="!isRelative || isMailTo"
+            v-show="!isRelative || isMailTo"
             target="_blank"
             :href="item.url"
             class="menu-link link-external"
@@ -10,7 +10,7 @@
         />
 
         <nuxt-link
-            v-if="isRelative && !isHash"
+            v-show="isRelative && !isHash"
             :to="relativeUrl"
             class="menu-link link-internal"
             v-scroll-to="relativeUrl"
@@ -21,14 +21,14 @@
         </nuxt-link>
 
         <span
-            v-if="isHash"
+            v-show="isHash"
             class="menu-label"
             v-html="item.label"
         />
 
         <!-- TODO Make prop for sub-menus to be drop downs -->
         <ul
-            v-if="hasSubMenu"
+            v-show="hasSubMenu"
             class="sub-menu"
         >
             <wp-menu-item

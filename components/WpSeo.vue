@@ -15,11 +15,11 @@
     >
         <!-- Print content to page for SEO gain -->
         <h1
-            v-if="parsedTitle"
+            v-show="parsedTitle"
             v-html="parsedTitle"
         />
         <div
-            v-if="parsedDescription"
+            v-show="parsedDescription"
             v-html="parsedDescription"
         />
     </div>

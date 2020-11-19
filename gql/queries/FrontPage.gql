@@ -95,6 +95,10 @@ query FrontPage {
             }
           }
         }
+        saleForm {
+          title
+          subtitle
+        }
       }
     }
   }

@@ -17,6 +17,7 @@
       :titleForm="item.titileForm"
    />
    <ServiceSlider />
+   <SalesForm />
  </div>
 </template>
 <script>

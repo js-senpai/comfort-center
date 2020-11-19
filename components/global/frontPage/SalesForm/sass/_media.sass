@@ -1,0 +1,30 @@
+@screen lg
+  .salesForm__container
+    padding: 40px 50px 50px 50px
+    position: relative
+    .contact-form__item
+      margin-bottom: 0
+    &::before
+      content: ""
+      background: top left/100% url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTQiIGhlaWdodD0iNTMiIHZpZXdCb3g9IjAgMCA1NCA1MyIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTU0IDNDMzcuOTg4NSAzIDE5LjAxMTUgMyAzIDNWNTMiIHN0cm9rZT0iI0ZGQzYyMCIgc3Ryb2tlLXdpZHRoPSI1Ii8+Cjwvc3ZnPgo=) no-repeat
+      width: 50px
+      height: 50px
+      position: absolute
+      top: -5px
+      left: -5px
+    .contact-form__submit
+      margin: 0
+  .salesForm
+    background: linear-gradient(to right,var(--color-white) 50%,var(--color-blue) 50%)
+  .salesForm__title
+    margin-bottom: 20px
+  .salesForm__form-container
+    display: grid
+    grid-template-columns: 2fr 2fr 1fr
+    grid-gap: 30px
+    align-items: end
+    .contact-form__input,.contact-form__select-none
+      max-width: 100%
+  .salesForm__input-checkbox
+    grid-column-start: 1
+    grid-column-end: 4

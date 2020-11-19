@@ -7,13 +7,13 @@
             <div class="container">
                 <div class="banner__top-row">
                     <h1
-                        v-if="bannerData.title"
+                        v-show="bannerData.title"
                         class="title banner__top-title"
                     >
                         {{ bannerData.title }}
                     </h1>
                     <h4
-                        v-if="bannerData.subtitle"
+                        v-show="bannerData.subtitle"
                         class="banner__top-subtitle"
                     >
                         {{ bannerData.subtitle }}
@@ -24,7 +24,7 @@
         <div class="banner__bottom">
             <div class="container banner__bottom-container">
                         <ul
-                                v-if="bannerData.services"
+                                v-show="bannerData.services"
                                 v-animate.repeat="'fadeInLeft'"
                                 class="banner__services-list"
                         >
@@ -45,19 +45,19 @@
                             </li>
                         </ul>
                         <div
-                                v-if="bannerData.contactForm"
+                                v-show="bannerData.contactForm"
                                 v-animate.repeat="'fadeInRight'"
                                 class="contact-form banner__bottom-contact-form"
                         >
                             <div class="banner___bottom-contact-form-wrapper border-dec">
                                 <h3
-                                        v-if="bannerData.contactForm.title"
+                                        v-show="bannerData.contactForm.title"
                                         class="contact-form__title banner__bottom-contact-form-title"
                                 >
                                     {{ bannerData.contactForm.title }}
                                 </h3>
                                 <div
-                                        v-if="bannerData.contactForm.subtitle"
+                                        v-show="bannerData.contactForm.subtitle"
                                         class="contact-form__subtitle banner__bottom-contact-form-subtitle"
                                 >{{ bannerData.contactForm.subtitle }}</div>
                                 <form class="contact-form__container banner__bottom-contact-form__container" @submit="sendForm($event)">
@@ -70,7 +70,7 @@
                                                 v-model="$v.name.$model"
                                                 required
                                         >
-                                        <span class="contact-form__error" v-if="!$v.name.checkName">Введите корректное имя</span>
+                                        <span class="contact-form__error" v-show="!$v.name.checkName">Введите корректное имя</span>
                                     </div>
                                     <div class="contact-form__item">
                                         <label
@@ -85,7 +85,7 @@
                                                 placeholder="+7(__)__-__-__"
                                                 required
                                         />
-                                        <span class="contact-form__error" v-if="!$v.tel.minLength">Введите корректный номер телефона</span>
+                                        <span class="contact-form__error" v-show="!$v.tel.minLength">Введите корректный номер телефона</span>
                                     </div>
                                     <div class="contact-form__item">
                                         <label class="contact-form__checkbox-container">
@@ -99,7 +99,7 @@
                                     <div class="contact-form__item">
                                         <button type="submit" class="contact-form__submit">Отправить</button>
                                     </div>
-                                    <span class="contact-form__error" v-if="error">Произошла ошибка во время отправки формы.{{ errorText }}</span>
+                                    <span class="contact-form__error" v-show="error">Произошла ошибка во время отправки формы.{{ errorText }}</span>
                                 </form>
                             </div>
                         </div>

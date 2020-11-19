@@ -5,7 +5,7 @@
             :style="sizerStyles"
         >
             <img
-                v-if="parsedSrc"
+                v-show="parsedSrc"
                 ref="img"
                 class="media image"
                 :src="parsedSrc"
@@ -18,7 +18,7 @@
             >
 
             <video
-                v-if="parsedVideoUrl"
+                v-show="parsedVideoUrl"
                 ref="video"
                 class="media video"
                 :src="parsedVideoUrl"
@@ -33,7 +33,7 @@
             />
         </div>
         <figcaption
-            v-if="parsedCaption"
+            v-show="parsedCaption"
             class="caption"
             v-html="parsedCaption"
         />

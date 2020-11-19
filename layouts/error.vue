@@ -8,7 +8,7 @@
         </h2>
 
         <p
-            v-if="error.message"
+            v-show="error.message"
             v-text="error.message"
         />
 
