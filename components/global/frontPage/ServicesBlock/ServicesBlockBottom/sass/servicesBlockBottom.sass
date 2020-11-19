@@ -1,0 +1,84 @@
+.service-section__bottom
+  background: var(--color-grey-light)
+  padding-bottom: 20px
+.service-section__bottom-service-list
+  max-width: 670px
+  margin-bottom: 19px
+.service-section__bottom-service-list-item
+  margin-bottom: 15px
+  box-shadow: 0px 4px 30px rgba(202, 202, 202, 0.25)
+  background-color: var(--color-blue)
+  color: var(--color-white)
+  padding: 15px 17px 23px 17px
+  &.empty
+    display: none
+.service-section__bottom-service-list-img
+  width: 50px
+  height: 50px
+  background-color: var(--color-white)
+  display: flex
+  justify-content: center
+  align-items: center
+  margin-bottom: 12px
+  img
+    max-height: 25px
+    max-width: 25px
+.service-section__bottom-service-list-title
+  font-family: 'DinPro',sans-serif
+  font-weight: bold
+  font-size: 20px
+  margin-bottom: 9px
+.service-section__bottom-service-list-subtitle
+  font-size: 14px
+.service-section__bottom-gallery
+  display: grid
+  grid-gap: 20px
+  grid-template-columns: repeat(2,1fr)
+  margin-bottom: 25px
+.service-section__bottom-table
+  display: table
+  background: var(--color-white)
+  box-shadow: 0px 10px 40px rgba(220, 220, 220, 0.25)
+  width: 100%
+  margin-bottom: 20px
+.service-section__bottom-table-tr
+  display: table-row
+  .service-section__bottom-table-td:first-child
+    border-right: 1px solid #EDEDED
+.service-section__bottom-table-td
+  display: table-cell
+  padding: 12px
+  width: 50%
+  font-size: 14px
+  border-bottom: 1px solid #EDEDED
+.service-section__bottom-table-tr,.service-section__bottom-table-header,.service-section__bottom-table-body
+  width: 100%
+.service-section__bottom-table-header
+  display: table-header-group
+.service-section__bottom-table-body
+  display: table-footer-group
+.service-section__bottom-table-body
+  .service-section__bottom-table-tr:nth-child(odd)
+    background: #FAFAFA
+  .service-section__bottom-table-tr:last-child
+    .service-section__bottom-table-td
+      border-bottom: 0
+.service-section__bottom-table-header
+  .service-section__bottom-table-td
+    font-size: 18px
+    font-weight: bold
+.service-section__bottom-info
+  font-size: 14px
+  display: flex
+.service-section__bottom-info-img
+  width: 50px
+  height: 50px
+  background: var(--color-white) top right url("~static/images/icons/border-left-yellow.svg") no-repeat
+  margin-right: 13px
+  display: flex
+  justify-content: center
+  align-items: center
+  img
+    max-width: 25px
+    max-height: 25px
+@import "media"

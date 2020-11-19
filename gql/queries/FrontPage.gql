@@ -2,6 +2,25 @@ query FrontPage {
   nodeByUri(uri: "/") {
     ... on Page {
       mainPage {
+        catalog {
+          title
+          subtitle
+          catalogList {
+            category
+            typeMaterial {
+              name
+              products {
+                desc
+                name
+                manufacturer
+                img {
+                  altText
+                  sourceUrl
+                }
+              }
+            }
+          }
+        }
         sliderTabContainer {
           title
           sliderTab {
