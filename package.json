@@ -33,6 +33,7 @@
         "v-mask": "^2.2.3",
         "vue-animate-scroll": "^0.1.5",
         "vue-scrollto": "^2.20.0",
+        "vue-select": "^3.10.8",
         "vue-slick-carousel": "^1.0.6",
         "vue2-animate": "^2.1.4",
         "vuelidate": "^0.7.6"

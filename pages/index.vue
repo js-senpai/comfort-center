@@ -19,6 +19,7 @@
    <ServiceSlider />
    <SalesForm />
    <Catalog />
+   <PriceForm />
  </div>
 </template>
 <script>

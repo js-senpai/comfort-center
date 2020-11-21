@@ -6,7 +6,14 @@ export const state = () => ({
     categories: [],
     productTypes: [],
     idx: 0,
-    productsToShow: 6
+    productsToShow: 6,
+    modal: false,
+    productModal: {
+        name: '',
+        filter: null,
+        category: null,
+        type: null
+    }
 })
 
 // Define mutations
@@ -145,6 +152,37 @@ export const mutations = {
     LOAD_MORE(state){
       state.productsToShow += 3
     },
+    // Toggle modal
+    TOGGLE_MODAL(state,{product,isActive}){
+      state.modal = isActive
+      if(product !== null){
+          state.productModal.name = product
+          const getFilters = state.filters.filter((item)=>{
+              if(item.enable){
+                  return item
+              }
+          })
+          state.productModal.filter = Array.isArray(getFilters)?JSON.stringify(getFilters.map((item)=>{
+              return item.name
+          })): JSON.stringify(getFilters.name)
+          const getCategories = state.categories.filter((item)=>{
+              if(item.enable){
+                  return item
+              }
+          })
+          state.productModal.category = Array.isArray(getCategories)?JSON.stringify(getCategories.map((item)=>{
+              return item.name
+          })): JSON.stringify(getCategories.name)
+          const getType = state.productTypes.filter((item)=>{
+              if(item.enable){
+                  return item
+              }
+          })
+          state.productModal.type = Array.isArray(getType)?JSON.stringify(getType.map((item)=>{
+              return item.name
+          })): JSON.stringify(getType.name)
+      }
+    },
     //Animation
     run(state) {
         if(state.filteredProducts.length && state.idx == 0){
@@ -210,5 +248,7 @@ export const getters = {
     getTypes: state => state.productTypes,
     getFilteredProducts: state => state.filteredProducts,
     getIdx: state=>state.idx,
-    getProductsToShow: state => state.productsToShow
+    getProductsToShow: state => state.productsToShow,
+    getProductModal: state => state.productModal,
+    getModal: state => state.modal
 }

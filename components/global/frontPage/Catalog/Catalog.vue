@@ -6,6 +6,7 @@
                <CatalogFilter class="hidden lg:block" />
                <CatalogContainer />
             </div>
+            <CatalogGallery />
         </div>
     </section>
 </template>

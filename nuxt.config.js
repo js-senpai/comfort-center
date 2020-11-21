@@ -78,7 +78,8 @@ export default {
         { src: "~/plugins/vue-mask.js", mode: "client" },
         { src: "~/plugins/validate.js" },
         { src: "~/plugins/wow.js" },
-        { src: "~/plugins/slider.js" }
+        { src: "~/plugins/slider.js" },
+        { src: "~/plugins/vue-select.js"}
     ],
 
     /*
@@ -90,7 +91,7 @@ export default {
         "@nuxtjs/sitemap",
         "nuxt-lazy-load",
         "@nuxtjs/axios",
-        ['vue-scrollto/nuxt', { duration: 1000 }]
+        ['vue-scrollto/nuxt', { duration: 1000 }],
     ],
 
     /*

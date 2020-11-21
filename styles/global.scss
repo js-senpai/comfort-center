@@ -249,6 +249,36 @@ input,button{
         margin-right: 10px;
     }
 }
+.contact-form__select{
+    background-color: var(--color-white);
+    padding: 8px 15px;
+    font-size: 14px;
+    height: 50px;
+    #vs1__listbox{
+        border-top: 2px solid var(--color-grey-light);
+    }
+    .vs__dropdown-toggle{
+        border: none;
+        height: 37px;
+    }
+    .vs__open-indicator,.vs__clear{
+        fill: var(--color-blue)
+    }
+    .vs__open-indicator{
+        width: 20px;
+        height: 20px;
+    }
+    .vs__selected{
+        margin-left: 0;
+        padding-left: 0;
+    }
+    input{
+        border: none;
+        outline: none;
+        padding: 0;
+        margin: 0;
+    }
+}
 .contact-form__file.done::before{
     background-image: url('~static/images/icons/file-yellow.svg');
 }
@@ -298,3 +328,4 @@ input,button{
     }
 }
 @import "media";
+@import "~vue-select/src/scss/vue-select.scss";

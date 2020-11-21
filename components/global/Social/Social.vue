@@ -15,11 +15,6 @@
 </style>
 <script>
     export default {
-        props: {
-            socials: {
-                type: Array,
-                required: true
-            }
-        }
+        props:['socials']
     }
 </script>

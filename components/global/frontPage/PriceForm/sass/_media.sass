@@ -1,0 +1,20 @@
+@screen lg
+  .priceForm
+    background: linear-gradient(to right,var(--color-blue) 90%,var(--color-white) 10%)
+    .contact-form__item
+      margin-bottom: 0
+    .contact-form__submit
+      margin: 0
+  .priceForm__title
+    margin-bottom: 20px
+  .priceForm-container
+    padding-top: 47px
+  .priceForm__form-container
+    @apply grid
+    grid-gap: 20px
+    grid-template-columns: repeat(3,1fr)
+  .priceForm__input-checkbox
+    grid-column-start: 1
+    grid-column-end: 4
+  .priceForm__form-container
+    display: block

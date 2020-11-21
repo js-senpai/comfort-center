@@ -14,7 +14,7 @@
                     </header>
                     <footer class="catalog__products-footer">
                         <div class="catalog__products-description" v-html="item.desc" />
-                        <button class="contact-form__submit catalog__products-submit">Заказать</button>
+                        <button @click="TOGGLE_MODAL({product: item.name,isActive: true})" type="button" class="contact-form__submit catalog__products-submit">Заказать</button>
                     </footer>
                 </div>
             </transition-group>
@@ -48,10 +48,11 @@
         methods: {
             ...mapActions({
                 run: 'catalog/run',
-                enter: 'catalog/enter'
+                enter: 'catalog/enter',
             }),
             ...mapMutations({
-                loadMore: 'catalog/LOAD_MORE'
+                loadMore: 'catalog/LOAD_MORE',
+                TOGGLE_MODAL: 'catalog/TOGGLE_MODAL'
             })
         },
     }
