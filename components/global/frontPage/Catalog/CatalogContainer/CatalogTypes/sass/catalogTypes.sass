@@ -1,0 +1,19 @@
+.catalog__types
+  margin-bottom: 30px
+  display: grid
+  grid-template-columns: repeat(auto-fit,minmax(121px,150px))
+  grid-gap: 20px
+  padding-top: 20px
+  justify-content: center
+.catalog__types-item
+  padding: 15px 10px
+  display: flex
+  justify-content: center
+  align-items: center
+  border: 1px solid #B8BABF
+  cursor: pointer
+  &.active,&:hover
+    background-color: var(--color-grey)
+    box-shadow: 0px 4px 30px rgba(202, 202, 202, 0.25)
+    color: var(--color-white)
+@import "media"

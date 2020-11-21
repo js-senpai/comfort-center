@@ -5,8 +5,8 @@
             class="banner__services-list"
     >
         <li
-                v-for="(item,index) in services"
-                :key="index"
+                v-for="item in services"
+                :key="item.id"
                 class="banner__services-list-item"
         >
             <div class="banner__services-list-item__icon">
@@ -25,6 +25,7 @@
     @import "sass/bannerServicesList"
 </style>
 <script>
+    import stateHelper from "../../../../../../helpers/stateHelper"
     // Helpers
     import _get from "lodash/get"
     // Queries
@@ -32,7 +33,12 @@
     export default {
         async fetch() {
             const data = await this.$graphql.request(FRONT_PAGE)
-            this.services = _get(data, "nodeByUri.mainPage.banner.services", {})
+            this.services = _get(data, "nodeByUri.mainPage.banner.services", {}).map((item)=>{
+                return {
+                    id: stateHelper.generateId(),
+                    ...item
+                }
+            })
         },
         data(){
             return {

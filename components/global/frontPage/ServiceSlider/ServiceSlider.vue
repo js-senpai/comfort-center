@@ -3,10 +3,10 @@
         <div v-animate.repeat="'fadeInLeft'" class="container serviceSlider-section-container">
             <h2 class="title-section serviceSlider-section__title" v-show="serviceData.title">{{ serviceData.title }}</h2>
         </div>
-        <ul v-animate.repeat="'fadeInRight'" class="serviceSlider-tabNav" v-show="serviceData.sliderTab">
-            <li v-for="(item,index) in serviceData.sliderTab" class="serviceSlider-tabNav-item" :key="index" @click="changeTab($event.target,index)" :class="{active:index === 0}">{{ item.name }}</li>
+        <ul v-animate.repeat="'fadeInRight'" class="tabNav" v-show="sliderTab">
+            <li v-for="(item,index) in serviceData.sliderTab" class="tabNav-item" :key="item.id" @click="changeTab($event.target,index)" :class="{active:index === 0}">{{ item.name }}</li>
         </ul>
-        <div v-animate.repeat="'fadeInRight'" v-for="(itemTab,indexTab) in serviceData.sliderTab" :key="indexTab" :class="{active:indexTab === 0}"  :id="`tab-${indexTab}`"  class="serviceSlider-tab-container">
+        <div v-animate.repeat="'fadeInRight'" v-for="(itemTab,indexTab) in sliderTab" :key="itemTab.id" :class="{active:indexTab === 0}"  :id="`tab-${indexTab}`"  class="serviceSlider-tab-container">
             <VueSlickCarousel v-show="itemTab.slider" :arrows="false" :dots="false" :ref="`slick${indexTab}`" class="serviceSlider">
                <div v-for="(slideItem,indexItem) in itemTab.slider" :key="indexItem" class="serviceSlider-item">
                    <div class="serviceSlider-tab-header">
@@ -61,6 +61,7 @@
     @import "sass/serviceSlider"
 </style>
 <script>
+    import stateHelper from "../../../../helpers/stateHelper"
     // Helpers
     import _get from "lodash/get"
     // Queries
@@ -69,10 +70,17 @@
       async fetch(){
           const data = await this.$graphql.request(FRONT_PAGE)
           this.serviceData = _get(data, "nodeByUri.mainPage.sliderTabContainer", {})
+          this.sliderTab = _get(data, "nodeByUri.mainPage.sliderTabContainer.sliderTab", {}).map((item)=>{
+              return {
+                  id: stateHelper.generateId(),
+                  ...item
+              }
+          })
       },
       data(){
           return {
               serviceData: {},
+              sliderTab: {},
               mainImg: '',
               settings: {
                   prevArrow: '#test'

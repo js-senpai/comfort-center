@@ -18,12 +18,13 @@
     justify-content: center;
     align-items: center;
     background-color: var(--color-yellow);
-    box-shadow: 0px 10px 20px var(--color-black);
+    box-shadow: 0px 10px 20px rgba(128, 132, 135, 0.3);
     cursor: pointer;
     text-transform: uppercase;
     color: var(--color-black);
+    font-weight: bold;
     &:hover{
-        box-shadow: 0px 10px 20px var(--color-black);
+        box-shadow: 0px 10px 20px rgba(128, 132, 135, 0.3);
     }
     &:focus,
     &:active{

@@ -20,6 +20,12 @@ query FrontPage {
               }
             }
           }
+          galleryList {
+            img {
+              altText
+              sourceUrl
+            }
+          }
         }
         sliderTabContainer {
           title

@@ -59,7 +59,6 @@ export default {
      */
     styleResources: {
         scss: [
-            "~/styles/sass/vue2-animate.sass",
             "~/styles/animation.scss",
             "~/styles/scss-variables.scss",
             "~/styles/mixins.scss",
