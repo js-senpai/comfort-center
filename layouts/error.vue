@@ -1,19 +1,19 @@
 <template>
     <section class="section section-404">
         <h2 v-if="error.statusCode === 404">
-            Sorry the page could not be found.
+            Извините, кажется такой страницы не существует
         </h2>
         <h2 v-else>
-            A {{ error.statusCode }} error occurred.
+            Упс! Кажется произошла ошибка {{ error.statusCode }}.
         </h2>
 
-        <p
-            v-show="error.message"
-            v-text="error.message"
-        />
+<!--        <p-->
+<!--            v-show="error.message"-->
+<!--            v-text="error.message"-->
+<!--        />-->
 
         <nuxt-link to="/">
-            Back to the home page
+            Вернуться на главную
         </nuxt-link>
     </section>
 </template>

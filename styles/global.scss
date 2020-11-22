@@ -327,5 +327,8 @@ input,button{
         box-shadow: 0px 10px 20px rgba(214, 160, 4, 0.3);
     }
 }
+.wp-content{
+    margin-top: 25px;
+}
 @import "media";
 @import "~vue-select/src/scss/vue-select.scss";
