@@ -20,6 +20,8 @@
    <SalesForm />
    <Catalog />
    <PriceForm />
+   <Advantages />
+   <Contacts />
  </div>
 </template>
 <script>

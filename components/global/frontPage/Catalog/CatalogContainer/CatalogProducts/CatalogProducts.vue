@@ -14,7 +14,8 @@
                     </header>
                     <footer class="catalog__products-footer">
                         <div class="catalog__products-description" v-html="item.desc" />
-                        <button @click="TOGGLE_MODAL({product: item.name,isActive: true})" type="button" class="contact-form__submit catalog__products-submit">Заказать</button>
+                        <div class="catalog_products-price">{{ item.price }}</div>
+                        <button @click="TOGGLE_MODAL({product: item.name,price: item.price, isActive: true})" type="button" class="contact-form__submit catalog__products-submit">Заказать</button>
                     </footer>
                 </div>
             </transition-group>

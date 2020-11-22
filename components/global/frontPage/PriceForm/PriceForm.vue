@@ -1,5 +1,5 @@
 <template>
-  <section class="priceForm">
+  <section v-animate.repeat="'fadeInLeft'" class="priceForm">
       <div class="container priceForm-container">
           <h3 v-show="contactForm.title" class="contact-form__title priceForm__title">{{ contactForm.title }}</h3>
           <div v-show="contactForm.subtitle" v-html="contactForm.subtitle" class="contact-form__subtitle priceForm__subtitle" />

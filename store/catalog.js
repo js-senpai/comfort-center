@@ -10,6 +10,7 @@ export const state = () => ({
     modal: false,
     productModal: {
         name: '',
+        price: '',
         filter: null,
         category: null,
         type: null
@@ -153,10 +154,11 @@ export const mutations = {
       state.productsToShow += 3
     },
     // Toggle modal
-    TOGGLE_MODAL(state,{product,isActive}){
+    TOGGLE_MODAL(state,{product,price,isActive}){
       state.modal = isActive
-      if(product !== null){
+      if(product !== null && price !== null){
           state.productModal.name = product
+          state.productModal.price = price
           const getFilters = state.filters.filter((item)=>{
               if(item.enable){
                   return item

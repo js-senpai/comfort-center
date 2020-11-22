@@ -1,0 +1,45 @@
+.advantages
+  padding: 50px 0
+.advantages-title
+  width: 100%
+  text-align: center
+  margin-bottom: 47px
+.advantages-list
+  display: flex
+  justify-content: center
+  flex-wrap: wrap
+.advantages-list-item
+  padding: 22px 25px
+  background: var(--color-white)
+  max-width: 370px
+  width: 100%
+  text-align: center
+  box-shadow: 0px 10px 50px rgba(181, 181, 181, 0.25)
+  &:not(:last-child)
+    margin-bottom: 64px
+.advantages-list-icon
+  width: 50px
+  height: 50px
+  margin: -50px auto 16px auto
+  position: relative
+  &::before
+    content: ''
+    display: block
+    width: 20px
+    height: 20px
+    background: center/100% url('~static/images/icons/border-right-yellow.svg') no-repeat
+    position: absolute
+    top: -2px
+    right: -2px
+.advantages-list-icon-container
+  background: linear-gradient(140.58deg, #F9FBFF -32.14%, #EEF1F5 102.14%)
+  width: 100%
+  height: 100%
+  display: flex
+  justify-content: center
+  align-items: center
+.advantages-list-title
+  font-weight: bold
+  font-size: 18px
+  margin-bottom: 10px
+@import "media"

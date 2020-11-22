@@ -1,12 +1,12 @@
 <template>
-    <div class="formModal-overlay" v-show="modal" :class="{active: modal}" @click.self="TOGGLE_MODAL({product: null,isActive: false})">
+    <div class="formModal-overlay" v-show="modal" :class="{active: modal}" @click.self="TOGGLE_MODAL({product: null,price:null,isActive: false})">
         <transition name="slideUp">
             <div id="productModal" class="formModal productModal h-auto w-11/12 md:w-1/2 p-5   rounded-md" v-if="modal" :class="{active: modal}">
 
                 <div class="flex flex-col w-full h-auto ">
                     <!-- Header -->
                     <div class="flex w-full h-auto justify-end items-center">
-                        <div @click="TOGGLE_MODAL({product: null,isActive: false})" class="flex w-1/12 h-auto justify-center cursor-pointer">
+                        <div @click="TOGGLE_MODAL({product: null,price:null,isActive: false})" class="flex w-1/12 h-auto justify-center cursor-pointer">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
                         </div>
                         <!--Header End-->
@@ -115,7 +115,8 @@
                         productName: this.productForm.name,
                         productManufacturer: this.productForm.filters,
                         productCategory: this.productForm.category,
-                        productType: this.productForm.type
+                        productType: this.productForm.type,
+                        productPrice: this.productForm.price
                     }))
                     if(response.status !== "mail_sent"){
                         this.errorText = response.message
@@ -125,7 +126,7 @@
                         this.mailSent = true
                         this.error = false
                         setTimeout(()=>{
-                            this.TOGGLE_MODAL({product: null,isActive: false})
+                            this.TOGGLE_MODAL({product: null,price:null,isActive: false})
                         },2000)
                     }
                     this.name = null

@@ -13,6 +13,7 @@ query FrontPage {
                 desc
                 name
                 manufacturer
+                price
                 img {
                   altText
                   sourceUrl
@@ -129,6 +130,31 @@ query FrontPage {
           title
           select {
             name
+          }
+        }
+        advantages {
+          title
+          advantagesList {
+            description
+            title
+            icon {
+              altText
+              sourceUrl
+            }
+          }
+        }
+        contacts {
+          title
+          subtext
+          map
+          contactsList {
+            contactsContainer {
+              text
+              icon {
+                altText
+                sourceUrl
+              }
+            }
           }
         }
       }

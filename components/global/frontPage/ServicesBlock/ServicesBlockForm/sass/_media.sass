@@ -1,28 +1,28 @@
 @screen lg
-.service-section__form-block
-  display: flex
-  justify-content: center
-  flex-direction: row
-.service-section__form-file
-  margin-right: 20px
-  margin-bottom: 0
-.service-section__form
-  background: linear-gradient(to right,var(--color-blue) 50%,var(--color-grey-light) 50%)
-.service-section:nth-child(even)
-  .service-section-container-top
-    justify-content: flex-end
-  .service-section-container-bottom
-    flex-direction: row-reverse
-  .service-section__top-right
-    left: 0
+  .service-section__form-block
+    display: flex
+    justify-content: center
+    flex-direction: row
+  .service-section__form-file
+    margin-right: 20px
+    margin-bottom: 0
   .service-section__form
-    background: linear-gradient(to right,var(--color-grey-light) 50%,var(--color-blue) 50%)
-.contact-form__file-done
-  bottom: -20px
-.service-section__form-container.border-dec::before
-  display: block
-.service-section:nth-child(odd)
+    background: linear-gradient(to right,var(--color-blue) 50%,var(--color-grey-light) 50%)
+  .service-section:nth-child(even)
+    .service-section-container-top
+      justify-content: flex-end
+    .service-section-container-bottom
+      flex-direction: row-reverse
+    .service-section__top-right
+      left: 0
+    .service-section__form
+      background: linear-gradient(to right,var(--color-grey-light) 50%,var(--color-blue) 50%)
+  .contact-form__file-done
+    bottom: -20px
   .service-section__form-container.border-dec::before
-    right: -5px
-    left: inherit
-    transform: rotate(90deg)
+    display: block
+  .service-section:nth-child(odd)
+    .service-section__form-container.border-dec::before
+      right: -5px
+      left: inherit
+      transform: rotate(90deg)
