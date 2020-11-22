@@ -1,5 +1,5 @@
 <template>
-    <section class="catalog">
+    <section class="catalog" id="service-4">
         <div class="container">
             <CatalogTop  />
             <div class="catalog__wrapper">

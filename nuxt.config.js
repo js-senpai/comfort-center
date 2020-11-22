@@ -88,7 +88,7 @@ export default {
     modules: [
         "nuxt-graphql-request",
         "@nuxtjs/style-resources",
-        "@nuxtjs/sitemap",
+        // "@nuxtjs/sitemap",
         "nuxt-lazy-load",
         "@nuxtjs/axios",
         ['vue-scrollto/nuxt', { duration: 1000 }],
@@ -97,7 +97,9 @@ export default {
     /*
      * Build modules
      */
-    buildModules: ["@nuxtjs/dotenv", "~/modules/sitemapRouteGenerator",'@nuxtjs/tailwindcss', '@aceforth/nuxt-optimized-images'
+    buildModules: ["@nuxtjs/dotenv",
+        // "~/modules/sitemapRouteGenerator",
+        '@nuxtjs/tailwindcss', '@aceforth/nuxt-optimized-images'
     ],
     optimizedImages: {
         optimizeImages: true
@@ -214,20 +216,20 @@ export default {
      ** You can see output at /sitemap.xml
      ** SEE https://github.com/nuxt-community/sitemap-module
      */
-    sitemap: {
-        // If you are NOT using Netlify to host, you need to set the hostname
-        hostname: process.env.URL || "http://localhost:3000",
-        filter({ routes }) {
-            // Don't allow these paths to show in sitemap.
-            // Add anything you want to hide from the sitemap
-            const excludedPaths = ["/wp-admin/"]
-
-            return routes.filter((route) => {
-                console.log(route)
-                return !excludedPaths.includes(route.url)
-            })
-        },
-    },
+    // sitemap: {
+    //     // If you are NOT using Netlify to host, you need to set the hostname
+    //     hostname: process.env.URL || "http://localhost:3000",
+    //     filter({ routes }) {
+    //         // Don't allow these paths to show in sitemap.
+    //         // Add anything you want to hide from the sitemap
+    //         const excludedPaths = ["/wp-admin/"]
+    //
+    //         return routes.filter((route) => {
+    //             console.log(route)
+    //             return !excludedPaths.includes(route.url)
+    //         })
+    //     },
+    // },
 
     /*
      ** Allow devices on local network to view the site at {your IP}:3000
