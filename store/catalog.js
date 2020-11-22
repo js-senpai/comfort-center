@@ -181,7 +181,7 @@ export const mutations = {
               }
           })
           state.productModal.type = Array.isArray(getType)?JSON.stringify(getType.map((item)=>{
-              return item.name
+              return item
           })): JSON.stringify(getType.name)
       }
     },

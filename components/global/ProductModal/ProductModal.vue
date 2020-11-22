@@ -18,6 +18,8 @@
                                 <div class="contact-form__item">
                                     <label class="contact-form__label">Имя</label>
                                     <input
+                                            ref="modalName"
+                                            :class="{ error: !$v.name.checkName}"
                                             type="text"
                                             class="contact-form__input name"
                                             placeholder="Введите ваше имя"
@@ -44,11 +46,12 @@
                                 <div class="contact-form__item productModal__input-checkbox">
                                     <label class="contact-form__checkbox-container">
                                         <div class="contact-form__checkbox-wrapper focus-within:border-blue-500">
-                                            <input type="checkbox" class="contact-form__checkbox" required>
+                                            <input @change="checkCheckbox($event.target)" type="checkbox" class="contact-form__checkbox" required>
                                             <svg class="fill-current hidden w-4 h-4 text-green-500 pointer-events-none" viewBox="0 0 20 20"><path d="M0 11l2-2 5 5L18 3l2 2L7 18z"/></svg>
                                         </div>
                                         <div class="contact-form__select-none">Я принимаю <a href="/policy.pdf" target="_blank">соглашение сайта</a> об обработке персональных данных</div>
                                     </label>
+                                    <span class="contact-form__error" v-show="errorCheck">Необходимо дать согласие на обработку персональных данных</span>
                                 </div>
                                 <div class="contact-form__item productModal__submit-container">
                                     <button type="submit" class="contact-form__submit">Отправить</button>
@@ -72,7 +75,7 @@
 <script>
     import { mapGetters,mapMutations } from 'vuex'
     //Validation
-    import { minLength } from 'vuelidate/lib/validators'
+    import { minLength, required } from 'vuelidate/lib/validators'
     import {checkName,toFormData} from "../../../helpers/formHelper"
 
     export default {
@@ -81,6 +84,8 @@
                 contactForm: {},
                 name: null,
                 tel: null,
+                check: false,
+                errorCheck: false,
                 error: false,
                 errorText: null,
                 mailSent: false,
@@ -89,10 +94,12 @@
         },
         validations: {
             tel: {
-                minLength: minLength(9)
+                minLength: minLength(9),
+                required
             },
             name: {
-                checkName
+                checkName,
+                required
             }
         },
         computed: {
@@ -101,10 +108,25 @@
                 productForm: 'catalog/getProductModal'
             })
         },
+        watch:{
+            name: function () {
+                this.$v.name.checkName?this.$refs.salesName.classList.add('done'):''
+            },
+        },
         methods: {
             ...mapMutations({
                 TOGGLE_MODAL: 'catalog/TOGGLE_MODAL'
             }),
+            /* Проверка галочки */
+            checkCheckbox(event){
+                if(event.checked){
+                    this.check = true
+                    this.errorCheck = false
+                }else {
+                    this.check = false
+                    this.errorCheck = true
+                }
+            },
             /* Отправка формы */
             async sendForm(e){
                 e.preventDefault()

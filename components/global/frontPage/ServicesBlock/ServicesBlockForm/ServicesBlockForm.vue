@@ -29,6 +29,10 @@
             titleForm: {
                 type: String,
                 required: true
+            },
+            title: {
+                type: String,
+                required: true
             }
         },
         data(){
@@ -47,7 +51,7 @@
             async sendForm(e){
                 e.preventDefault()
                 try {
-                    const response = await this.$axios.$post(`${process.env.MAIN_URL}178/feedback`,toFormData({yourFile:this.file}))
+                    const response = await this.$axios.$post(`${process.env.MAIN_URL}178/feedback`,toFormData({title:this.title,yourFile:this.file}))
                     if(response.status !== "mail_sent"){
                         this.errorText = response.message
                         this.error = true

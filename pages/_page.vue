@@ -60,7 +60,6 @@ export default {
             }
         })
         const getPage = _get(data, "nodeByUri", {})
-        console.log(getPage)
         if(getPage === null){
             error({ statusCode: 404, message: '' })
         }

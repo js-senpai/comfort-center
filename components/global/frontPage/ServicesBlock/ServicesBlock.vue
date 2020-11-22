@@ -2,7 +2,7 @@
     <section class="service-section">
         <ServicesBlockTop :title="title" :subtitle="subtitle" :workTypes="workTypes" :img="img" />
         <ServicesBlockBottom :serviceList="serviceList" :galleryList="galleryList" :tablePrice="tablePrice" :infoText="infoText" />
-        <ServicesBlockForm :titleForm="titleForm" />
+        <ServicesBlockForm :title="title" :titleForm="titleForm" />
     </section>
 </template>
 <style lang="sass">
