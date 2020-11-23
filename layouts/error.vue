@@ -12,9 +12,9 @@
 <!--            v-text="error.message"-->
 <!--        />-->
 
-        <nuxt-link to="/">
+        <a href="/">
             Вернуться на главную
-        </nuxt-link>
+        </a>
     </section>
 </template>
 
@@ -23,6 +23,11 @@ export default {
     props: ["error"],
     mounted() {
         console.log(this.error)
+    },
+    computed:{
+        domainURL(){
+            return process.env.DOMAIN
+        }
     },
     head() {
         return {

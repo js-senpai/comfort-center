@@ -1,7 +1,7 @@
 <template>
-    <nuxt-link to="/" class="logo">
+    <a href="/" class="logo">
         <img :src="logo.url" :alt="logo.alt" />
-    </nuxt-link>
+    </a>
 </template>
 <style lang="sass">
     @import "sass/logo"

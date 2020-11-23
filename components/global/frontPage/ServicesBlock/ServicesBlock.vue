@@ -1,5 +1,5 @@
 <template>
-    <section class="service-section">
+    <section class="service-section" :id="id">
         <ServicesBlockTop :title="title" :subtitle="subtitle" :workTypes="workTypes" :img="img" />
         <ServicesBlockBottom :serviceList="serviceList" :galleryList="galleryList" :tablePrice="tablePrice" :infoText="infoText" />
         <ServicesBlockForm :id="id" :title="title" :titleForm="titleForm" />
