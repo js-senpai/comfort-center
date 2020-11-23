@@ -127,6 +127,7 @@
                         this.error = true
                     } else {
                         this.TOGGLE_MODAL({enable: true, message: response.message})
+                        this.$gtm.push({ event: 'bannerForm' })
                         this.error = false
                     }
                     this.name = null

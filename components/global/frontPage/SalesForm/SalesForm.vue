@@ -118,6 +118,7 @@
                     } else {
                         this.TOGGLE_MODAL({enable: true, message: response.message})
                         this.error = false
+                        this.$gtm.push({ event: 'salesForm' })
                     }
                     this.name = null
                     this.tel = null

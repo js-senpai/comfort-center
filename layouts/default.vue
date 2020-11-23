@@ -26,6 +26,9 @@ import FormModal from "../components/global/FormModal/FormModal"
 
 export default {
     components: {FormModal},
+    fetch(){
+      console.log(this.$route)
+    },
     data() {
         let output = {
             winHeight: 0,

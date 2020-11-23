@@ -85,6 +85,7 @@ export default {
     /*
      ** Nuxt.js modules
      */
+
     modules: [
         "nuxt-graphql-request",
         "@nuxtjs/style-resources",
@@ -92,8 +93,15 @@ export default {
         "nuxt-lazy-load",
         "@nuxtjs/axios",
         ['vue-scrollto/nuxt', { duration: 1000 }],
+        '@nuxtjs/gtm'
     ],
-
+    gtm: {
+        id: "GTM-KNKV243",
+        pageTracking: true,
+        pageViewEventName: "nuxtRoute",
+        enabled: true,
+        debug: true,
+    },
     /*
      * Build modules
      */
@@ -145,6 +153,7 @@ export default {
      ** Build configuration
      */
     build: {
+        publicPath: process.env.MAIN_DOMAIN,
         extractCSS: true,
         /*Min all*/
         html:{
@@ -208,7 +217,7 @@ export default {
     generate: {
         fallback: "404.html",
         interval: 500,
-        concurrency: 300,
+        concurrency: 300
     },
 
     /*

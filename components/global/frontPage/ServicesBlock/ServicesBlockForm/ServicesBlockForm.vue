@@ -26,6 +26,10 @@
     import { toFormData } from "../../../../../helpers/formHelper"
     export default {
         props: {
+            id: {
+                type: String,
+                required: true
+            },
             titleForm: {
                 type: String,
                 required: true
@@ -58,6 +62,7 @@
                     } else {
                         this.TOGGLE_MODAL({enable: true, message: response.message})
                         this.error = false
+                        this.$gtm.push({ event: this.id })
                     }
                     console.log(response)
                     this.file = null

@@ -175,6 +175,7 @@
                     } else {
                         this.TOGGLE_MODAL({enable: true, message: response.message})
                         this.error = false
+                        this.$gtm.push({ event: 'priceForm' })
                     }
                     this.name = null
                     this.tel = null

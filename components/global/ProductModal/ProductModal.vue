@@ -147,6 +147,7 @@
                         this.thxMessage = response.message
                         this.mailSent = true
                         this.error = false
+                        this.$gtm.push({ event: 'catalogForm' })
                         setTimeout(()=>{
                             this.TOGGLE_MODAL({product: null,price:null,isActive: false})
                         },2000)

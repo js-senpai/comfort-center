@@ -2,7 +2,7 @@
     <section class="service-section">
         <ServicesBlockTop :title="title" :subtitle="subtitle" :workTypes="workTypes" :img="img" />
         <ServicesBlockBottom :serviceList="serviceList" :galleryList="galleryList" :tablePrice="tablePrice" :infoText="infoText" />
-        <ServicesBlockForm :title="title" :titleForm="titleForm" />
+        <ServicesBlockForm :id="id" :title="title" :titleForm="titleForm" />
     </section>
 </template>
 <style lang="sass">
@@ -11,6 +11,10 @@
 <script>
     export default {
         props: {
+            id: {
+                type: String,
+                required: true
+            },
             title: {
                 type: String,
                 required: true

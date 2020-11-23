@@ -13,16 +13,18 @@
         "start": "nuxt start",
         "storybook": "nuxt storybook",
         "storybook-build": "nuxt storybook build",
-        "generate": "nuxt generate && node ftp.js",
+        "generate": "nuxt generate",
         "heroku-postbuild": "nuxt generate"
     },
     "dependencies": {
         "@nuxtjs/axios": "^5.12.2",
         "@nuxtjs/dotenv": "^1.4.1",
         "@nuxtjs/eslint-module": "^3.0.1",
+        "@nuxtjs/gtm": "^2.4.0",
         "@nuxtjs/sitemap": "^2.4.0",
         "cheerio": "^1.0.0-rc.3",
         "core-js": "^3.6.5",
+        "dotenv": "latest",
         "graphql": "^15.4.0",
         "graphql-tag": "^2.11.0",
         "lodash": "^4.17.20",
@@ -36,8 +38,7 @@
         "vue-select": "^3.10.8",
         "vue-slick-carousel": "^1.0.6",
         "vue2-animate": "^2.1.4",
-        "vuelidate": "^0.7.6",
-        "dotenv": "latest"
+        "vuelidate": "^0.7.6"
     },
     "devDependencies": {
         "@aceforth/nuxt-optimized-images": "^1.3.0",
