@@ -119,7 +119,7 @@ export default {
      */
     graphql: {
         AST: true,
-        endpoint: "http://test.comfort-center.com/graphql",
+        endpoint: "https://montazh.pro/graphql",
         // options: {
         //     credentials: "include",
         //     mode: "cors",

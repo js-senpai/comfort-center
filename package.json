@@ -13,8 +13,8 @@
         "start": "nuxt start",
         "storybook": "nuxt storybook",
         "storybook-build": "nuxt storybook build",
-        "generate": "nuxt generate",
-        "heroku-postbuild": "nuxt generate"
+        "generate": "nuxt generate && node ftp.js",
+        "heroku-postbuild": "nuxt build"
     },
     "dependencies": {
         "@nuxtjs/axios": "^5.12.2",
