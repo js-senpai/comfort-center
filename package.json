@@ -14,7 +14,7 @@
         "storybook": "nuxt storybook",
         "storybook-build": "nuxt storybook build",
         "generate": "nuxt generate && node ftp.js",
-        "heroku-postbuild": "npm run dev"
+        "heroku-postbuild": "npm run build"
     },
     "dependencies": {
         "@nuxtjs/axios": "^5.12.2",
