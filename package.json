@@ -10,7 +10,8 @@
     "scripts": {
         "dev": "nuxt",
         "build-old": "nuxt build",
-        "start": "nuxt start",
+        "start-old": "nuxt start",
+        "start": "npm run dev",
         "storybook": "nuxt storybook",
         "storybook-build": "nuxt storybook build",
         "generate": "nuxt generate && node ftp.js",
