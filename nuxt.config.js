@@ -119,7 +119,7 @@ export default {
      */
     graphql: {
         AST: true,
-        endpoint: "https://montazh.pro/graphql",
+        endpoint: `${process.env.DOMAIN}graphql`,
         // options: {
         //     credentials: "include",
         //     mode: "cors",
