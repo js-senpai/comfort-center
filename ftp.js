@@ -1,7 +1,7 @@
 const FtpDeploy = require("ftp-deploy")
 const ftpDeploy = new FtpDeploy()
 require('dotenv').config()
-const config = [
+const config =
     {
         user: process.env.FTP_NAME,
         // Password optional, prompted if none given
@@ -18,8 +18,8 @@ const config = [
         deleteRemote: false,
         // Passive mode is forced (EPSV command is not sent)
         forcePasv: true
-    },
-    {
+    }
+const configNew = {
         user: process.env.FTP_NAME,
         // Password optional, prompted if none given
         password: process.env.FTP_PASSWORD,
@@ -35,11 +35,14 @@ const config = [
         deleteRemote: false,
         // Passive mode is forced (EPSV command is not sent)
         forcePasv: true
-    },
-]
-for(let i = 0;i<config.length;i++){
-    ftpDeploy
-        .deploy(config[i])
-        .then(res => console.log("finished:", res))
-        .catch(err => console.log(err));
-}
+ }
+ftpDeploy
+        .deploy(config)
+        .then((res) => {
+            console.log("finished:", res)
+            ftpDeploy
+                .deploy(configNew)
+                .then(res => console.log("finished:", res))
+                .catch(err => console.log(err))
+        })
+        .catch(err => console.log(err))
