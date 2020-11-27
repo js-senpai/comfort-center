@@ -23,7 +23,7 @@ export const mutations = {
     SET_FILTERS(state, payload) {
         state.filters = payload.map((item) => {
             return {
-                ...item,
+                name:item,
                 enable: false,
                 id: stateHelper.generateId()
             }
@@ -48,26 +48,27 @@ export const mutations = {
     },
     // Set catalog data
     SET_CATALOG(state,payload){
+
         // Set categories
         if(payload !== undefined){
-            state.categories = payload.map(({category})=>{
+            const categories = payload.map(({category})=> category)
+            state.categories = [...new Map(categories.map(obj => [JSON.stringify(obj), obj])).values()].map((item)=>{
                 return {
-                    name: category,
+                    name: item,
                     enable: false,
                     id: stateHelper.generateId()
                 }
             })
             state.categories[0].enable = true
             // Set product types
-            const newTypes =  payload.map((item)=>{
-                return item.typeMaterial.map(({name})=>{
-                    return {
-                        name: name,
-                        enable: false
-                    }
-                })
-            }).flat(1)
-            state.productTypes = [...new Map(newTypes.map(obj => [JSON.stringify(obj), obj])).values()]
+            const newTypes =  payload.map(({typeMaterial})=>typeMaterial).flat(1)
+            state.productTypes = [...new Map(newTypes.map(obj => [JSON.stringify(obj), obj])).values()].map((item)=>{
+                return {
+                    name: item,
+                    enable: false,
+                    id: stateHelper.generateId()
+                }
+            })
             state.productTypes[0].enable = true
             // Set all products
             state.allProducts = payload
@@ -76,52 +77,47 @@ export const mutations = {
     // Generate filtered products
     FILTER_PRODUCTS(state){
         if(state.allProducts.length){
-            const getCategory = state.allProducts.map((item,index)=>{
-                if(state.categories[index].enable){
-                    if(state.categories[index].name == item.category){
-                        return item.typeMaterial
-                    }
+            const [getCategory] = state.categories.map((item)=>{
+                if(item.enable){
+                    return item.name
                 }
-            }).flat(1).filter((x) => {
+            }).filter((x) => {
                 return x !== undefined && x !== null
             })
-            const getTypes = getCategory.map((type,typeIndex)=>{
-                if(state.productTypes[typeIndex].enable){
-                    if(state.productTypes[typeIndex].name == type.name){
-                        return type.products
+            const getTypes = state.productTypes.map((item)=>{
+                if(item.enable){
+                    return item.name
+                }
+            }).filter((x) => {
+                return x !== undefined && x !== null
+            })
+            const getFilters = state.filters.map((item)=>{
+                if(item.enable){
+                    return item.name
+                }
+            }).filter((x) => {
+                return x !== undefined && x !== null
+            })
+            const getProducts = state.allProducts.map((item)=>{
+                if(item.category == getCategory &&
+                JSON.stringify(getTypes) == JSON.stringify(item.typeMaterial)){
+                    if(getFilters.length>0){
+                        if(JSON.stringify(getFilters) == JSON.stringify(item.manufacturer)){
+                            return {
+                                ...item,
+                                id: stateHelper.generateId(),
+                            }
+                        }
+                    } else {
+                        return {
+                            ...item,
+                            id: stateHelper.generateId()
+                        }
                     }
                 }
             }).filter((x) => {
                 return x !== undefined && x !== null
-            }).flat(1)
-            const getProducts =  getTypes.map((item)=>{
-                if(state.filters.length){
-                    if(state.filters.some(item=>item.enable === true)){
-                        return state.filters.map((filter=>{
-                            if(filter.enable){
-                                if(filter.name == item.manufacturer){
-                                    return  {
-                                        id: stateHelper.generateId(),
-                                        ...item
-                                    }
-                                }
-                            }
-                        }))
-                    } else {
-                        return  {
-                            id: stateHelper.generateId(),
-                            ...item
-                        }
-                    }
-                } else {
-                    return  {
-                        id: stateHelper.generateId(),
-                        ...item
-                    }
-                }
-            }).flat(1).filter((x) => {
-                return x !== undefined && x !== null
-            }).flat(1)
+            })
             state.filteredProducts = getProducts
         }
     },

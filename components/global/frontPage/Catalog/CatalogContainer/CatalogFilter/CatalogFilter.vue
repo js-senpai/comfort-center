@@ -26,17 +26,10 @@
     export default {
         async fetch(){
             const data = await this.$graphql.request(FRONT_PAGE)
-            const [{typeMaterial}] = _get(data, "nodeByUri.mainPage.catalog.catalogList", {})
+            const typeMaterial = _get(data, "nodeByUri.mainPage.catalog.catalogList", {})
             const getProducts = typeMaterial.map((item)=>{
-                return item.products.map(currentItem=>{
-                    if(currentItem.manufacturer !== undefined){
-                        return {
-                            name: currentItem.manufacturer
-                        }
-                    }
-
-                })
-            }).flat(2)
+                return item.manufacturer.map(currentItem=> currentItem)
+            }).flat(1)
             this.setFilters([...new Map(getProducts.map(obj => [JSON.stringify(obj), obj])).values()])
         },
         computed: {

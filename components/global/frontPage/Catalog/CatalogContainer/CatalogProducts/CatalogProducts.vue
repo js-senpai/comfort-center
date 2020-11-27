@@ -1,6 +1,6 @@
 <template>
     <div class="catalog__products-container">
-        <div    v-if="products.length" class="catalog__products">
+        <div  v-if="products.length" class="catalog__products">
             <transition-group  tag="div"
                                name="item"
                                @after-enter="enter()"
@@ -20,6 +20,7 @@
                 </div>
             </transition-group>
         </div>
+        <div v-else class="catalog__products-empty">Кажется нет продуктов в наличии по данному фильтру 😔</div>
         <transition name="fade">
             <button type="button" v-show="products.length> productsToShow || productsToShow < products.length" @click="loadMore()" class="loadMore">
                 <span class="loadMore-text">Показать ещё</span>

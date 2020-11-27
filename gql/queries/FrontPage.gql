@@ -7,19 +7,15 @@
               subtitle
               catalogList {
                 category
-                typeMaterial {
-                  name
-                  products {
-                    desc
-                    name
-                    manufacturer
-                    price
-                    img {
-                      altText
-                      sourceUrl
-                    }
-                  }
+                desc
+                img {
+                  altText
+                  sourceUrl
                 }
+                manufacturer
+                name
+                price
+                typeMaterial
               }
               galleryList {
                 img {
