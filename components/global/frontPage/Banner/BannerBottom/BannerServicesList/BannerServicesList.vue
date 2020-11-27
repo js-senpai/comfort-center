@@ -1,7 +1,7 @@
 <template>
     <ul
             v-show="services"
-            v-animate.repeat="'fadeInLeft'"
+
             class="banner__services-list"
     >
         <li

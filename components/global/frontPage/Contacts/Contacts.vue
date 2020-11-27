@@ -1,5 +1,5 @@
 <template>
-    <section v-animate.repeat="'fadeInLeft'" class="contacts">
+    <section  class="contacts">
         <div class="container">
             <div class="contacts-container">
                 <h2 v-show="contactsData.title" class="title-section contacts-title">{{ contactsData.title }}</h2>

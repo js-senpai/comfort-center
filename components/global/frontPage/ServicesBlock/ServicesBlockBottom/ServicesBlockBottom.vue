@@ -2,7 +2,7 @@
     <div class="service-section__bottom">
         <div class="container service-section-container">
             <div class="service-section-container-bottom">
-                <ul class="service-section__bottom-service-list" v-show="serviceList" v-animate.repeat="'fadeInLeft'">
+                <ul class="service-section__bottom-service-list" v-if="serviceList" >
                     <li class="service-section__bottom-service-list-item" v-for="(item,index) in serviceList" :key="index">
                         <div class="service-section__bottom-service-list-img" v-show="item.img">
                             <img :src="item.img.sourceUrl" :alt="item.img.altText" />
@@ -14,12 +14,12 @@
                     </li>
                 </ul>
             </div>
-            <ul class="service-section__bottom-gallery" v-show="galleryList" v-animate.repeat="'fadeInLeft'">
+            <ul class="service-section__bottom-gallery" v-show="galleryList" >
                 <li class="service-section__bottom-gallery-item" v-for="(item,index) in galleryList" :key="index">
                     <img :src="item.img.sourceUrl" :alt="item.img.altText" />
                 </li>
             </ul>
-            <div class="service-section__bottom-table" v-show="tablePrice" v-animate.repeat="'fadeInRight'">
+            <div class="service-section__bottom-table" v-show="tablePrice" >
                 <div class="service-section__bottom-table-header" v-show="tablePrice.name && tablePrice.value">
                     <div class="service-section__bottom-table-tr">
                         <div class="service-section__bottom-table-td">{{ tablePrice.name }}</div>
@@ -33,7 +33,7 @@
                     </div>
                 </div>
             </div>
-            <div class="service-section__bottom-info" v-show="infoText" v-animate.repeat="'fadeInLeft'">
+            <div class="service-section__bottom-info" v-show="infoText" >
                 <div class="service-section__bottom-info-img">
                     <img src="~static/images/icons/info-icon.svg" alt="info text">
                 </div>

@@ -1,5 +1,5 @@
 <template>
-    <div v-animate.repeat="'fadeInLeft'"  class="banner__top">
+    <div   class="banner__top">
         <div class="container">
             <div class="banner__top-row">
                 <h1

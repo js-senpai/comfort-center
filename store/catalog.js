@@ -164,25 +164,25 @@ export const mutations = {
                   return item
               }
           })
-          state.productModal.filter = Array.isArray(getFilters)?JSON.stringify(getFilters.map((item)=>{
-              return item.name
-          })): JSON.stringify(getFilters.name)
+          state.productModal.filter = Array.isArray(getFilters)?JSON.stringify(getFilters.map(({name})=>{
+              return name
+          }).join(',','')): JSON.stringify(getFilters.name)
           const getCategories = state.categories.filter((item)=>{
               if(item.enable){
                   return item
               }
           })
-          state.productModal.category = Array.isArray(getCategories)?JSON.stringify(getCategories.map((item)=>{
-              return item.name
-          })): JSON.stringify(getCategories.name)
+          state.productModal.category = Array.isArray(getCategories)?JSON.stringify(getCategories.map(({name})=>{
+              return name
+          }).join(',','')): JSON.stringify(getCategories.name)
           const getType = state.productTypes.filter((item)=>{
               if(item.enable){
-                  return item
+                  return item.name
               }
           })
-          state.productModal.type = Array.isArray(getType)?JSON.stringify(getType.map((item)=>{
-              return item
-          })): JSON.stringify(getType.name)
+          state.productModal.type = Array.isArray(getType)?JSON.stringify(getType.map(({name})=>{
+              return name
+          }).join(',','')): JSON.stringify(getType.name)
       }
     },
     //Animation

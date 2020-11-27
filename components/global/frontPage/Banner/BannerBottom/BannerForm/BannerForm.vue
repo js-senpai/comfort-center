@@ -1,7 +1,7 @@
 <template>
     <div
             v-show="contactForm"
-            v-animate.repeat="'fadeInRight'"
+
             class="contact-form banner__bottom-contact-form"
     >
         <div class="banner___bottom-contact-form-wrapper border-dec">
@@ -15,7 +15,7 @@
                     v-show="contactForm.subtitle"
                     class="contact-form__subtitle banner__bottom-contact-form-subtitle"
             >{{ contactForm.subtitle }}</div>
-            <form class="contact-form__container banner__bottom-contact-form__container" @submit="sendForm($event)">
+            <form class="contact-form__container banner__bottom-contact-form__container" @submit.prevent="sendForm">
                 <div class="contact-form__item">
                     <label class="contact-form__label">Имя</label>
                     <input
@@ -25,9 +25,9 @@
                             type="text"
                             class="contact-form__input name"
                             placeholder="Введите ваше имя"
-                            required
                     >
-                    <span class="contact-form__error" v-show="!$v.name.checkName">Введите корректное имя</span>
+                    <div class="contact-form__error" v-show="!$v.name.checkName">Введите корректное имя</div>
+                    <div v-show="$v.name.$error" class="contact-form__error">Это поле обязательно к заполнению</div>
                 </div>
                 <div class="contact-form__item">
                     <label
@@ -40,14 +40,14 @@
                             type="tel"
                             class="contact-form__input tel"
                             placeholder="+7(__)__-__-__"
-                            required
                     />
-                    <span class="contact-form__error" v-show="!$v.tel.minLength">Введите корректный номер телефона</span>
+                    <div class="contact-form__error" v-show="!$v.tel.minLength">Введите корректный мобильный телефон</div>
+                    <div v-show="$v.tel.$error" class="contact-form__error">Это поле обязательно к заполнению</div>
                 </div>
                 <div class="contact-form__item">
                     <label class="contact-form__checkbox-container">
                         <div class="contact-form__checkbox-wrapper focus-within:border-blue-500">
-                            <input @change="checkCheckbox($event.target)" type="checkbox" class="contact-form__checkbox"  required>
+                            <input @change="checkCheckbox($event.target)" type="checkbox" class="contact-form__checkbox" :checked="check">
                             <svg class="fill-current hidden w-4 h-4 text-green-500 pointer-events-none" viewBox="0 0 20 20"><path d="M0 11l2-2 5 5L18 3l2 2L7 18z"/></svg>
                         </div>
                         <div class="contact-form__select-none">Я принимаю <a href="/policy.pdf" target="_blank">соглашение сайта</a> об обработке персональных данных</div>
@@ -85,7 +85,7 @@
                 contactForm: {},
                 tel: null,
                 name: null,
-                check: false,
+                check: true,
                 errorCheck: false,
                 error: null,
                 errorText: null,
@@ -98,7 +98,7 @@
         },
         validations: {
             tel: {
-                minLength: minLength(9),
+                minLength: minLength(16),
                 required
             },
             name: {
@@ -118,24 +118,28 @@
                 }
             },
             /* Отправка формы */
-            async sendForm(e){
-                e.preventDefault()
+            async sendForm(){
+              this.$v.$touch()
+              if (!this.$v.$invalid && this.check) {
                 try {
-                    const response = await this.$axios.$post(`${process.env.MAIN_URL}93/feedback`,toFormData({name:this.name,tel:this.tel}))
-                    if(response.status !== "mail_sent"){
-                        this.errorText = response.message
-                        this.error = true
-                    } else {
-                        this.TOGGLE_MODAL({enable: true, message: response.message})
-                        this.$gtm.push({ event: 'bannerForm' })
-                        this.error = false
-                    }
-                    this.name = null
-                    this.tel = null
-                } catch (e) {
-                    console.log(e)
+                  const response = await this.$axios.$post(`${process.env.MAIN_URL}93/feedback`,toFormData({name:this.name,tel:this.tel}))
+                  if(response.status !== "mail_sent"){
+                    this.errorText = response.message
                     this.error = true
+                  } else {
+                    this.TOGGLE_MODAL({enable: true, message: response.message})
+                    this.$gtm.push({ event: 'bannerForm' })
+                    this.error = false
+                    this.errorCheck = false
+                    this.$v.$reset()
+                  }
+                  this.name = null
+                  this.tel = null
+                } catch (e) {
+                  console.log(e)
+                  this.error = true
                 }
+              }
             },
             // Модальное окно подтверждения
             ...mapMutations({

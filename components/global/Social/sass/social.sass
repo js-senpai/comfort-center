@@ -1,7 +1,17 @@
 .social-list-item
   @apply mb-4
+  &:first-child
+    display: none
   a
     @apply flex items-center
 .social-list-item__icon
   margin-right: 10px
+.header__top-mobile-socials
+  .social-list-item
+    .social-list-item__icon
+      display: none
+    &:first-child
+      display: block
+    &:last-child
+      display: none
 @import "media"

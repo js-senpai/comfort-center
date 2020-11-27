@@ -1,5 +1,5 @@
 <template>
-    <div v-animate.repeat="'fadeInLeft'" class="catalog__header">
+    <div  class="catalog__header">
         <h2 v-show="title" class="title-section catalog__header-title">{{ title }}</h2>
         <div v-show="subtitle" v-html="subtitle" class="subtitle-section catalog__header-subtitle" />
     </div>

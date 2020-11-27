@@ -1,0 +1,27 @@
+@screen lg
+  .header-overlay.active
+    display: block
+    position: static
+    background-color: transparent
+    padding: 0
+    .header-container
+      padding: 0
+      box-shadow: none
+  .header.fixed
+    .header__top
+      display: none
+    .header__bottom-container
+      display: flex
+    .header__bottom-menu
+      justify-content: flex-start
+    .header__bottom-socials
+      order: -1
+      display: flex
+      align-items: center
+      margin-right: 4%
+      .social-list-item
+        margin-bottom: 0
+        &:not(:last-child)
+          margin-right: 10%
+      .social-list-item__link
+        width: max-content

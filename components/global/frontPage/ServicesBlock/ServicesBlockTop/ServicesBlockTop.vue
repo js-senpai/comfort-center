@@ -1,7 +1,7 @@
 <template>
     <div class="service-section__top">
         <div class="container service-section-container service-section-container-top">
-            <div class="service-section__top-left" v-animate.repeat="'fadeInLeft'">
+            <div class="service-section__top-left" >
                 <h2 class="title-section service-section__title" v-show="title">{{ title }}</h2>
                 <div class="subtitle-section service-section__subtitle" v-show="subtitle">{{ subtitle }}</div>
                 <ul class="service-section__work-types" v-show="workTypes">
@@ -16,7 +16,7 @@
                 </ul>
             </div>
         </div>
-        <div class="service-section__top-right" v-show="img" v-animate.repeat="'fadeInRight'">
+        <div class="service-section__top-right" v-show="img" >
             <img :src="img.sourceUrl" :alt="img.altText" />
         </div>
     </div>

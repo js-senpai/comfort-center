@@ -1,80 +1,119 @@
-query FrontPage {
-  nodeByUri(uri: "/") {
-    ... on Page {
-      mainPage {
-        catalog {
-          title
-          subtitle
-          catalogList {
-            category
-            typeMaterial {
-              name
-              products {
-                desc
-                name
-                manufacturer
-                price
+    query FrontPage {
+      nodeByUri(uri: "/") {
+        ... on Page {
+          mainPage {
+            catalog {
+              title
+              subtitle
+              catalogList {
+                category
+                typeMaterial {
+                  name
+                  products {
+                    desc
+                    name
+                    manufacturer
+                    price
+                    img {
+                      altText
+                      sourceUrl
+                    }
+                  }
+                }
+              }
+              galleryList {
                 img {
                   altText
                   sourceUrl
                 }
               }
             }
-          }
-          galleryList {
-            img {
-              altText
-              sourceUrl
-            }
-          }
-        }
-        sliderTabContainer {
-          title
-          sliderTab {
-            name
-            slider {
-              deadline
+            sliderTabContainer {
               title
-              infoList {
-                title
-                infoListItem {
-                  text
+              sliderTab {
+                name
+                slider {
+                  deadline
+                  title
+                  infoList {
+                    title
+                    infoListItem {
+                      text
+                    }
+                  }
+                  img {
+                    altText
+                    sourceUrl
+                  }
+                  gallery {
+                    img {
+                      altText
+                      sourceUrl
+                    }
+                  }
                 }
               }
+            }
+            banner {
+              title
+              subtitle
+              services {
+                text
+                icon {
+                  altText
+                  sourceUrl
+                }
+              }
+              bg {
+                 sourceUrl
+              }
+              contactForm {
+                  subtitle
+                  title
+              }
+            }
+                gallerySection {
+                  title
+                  galleryServices {
+                    title
+                    img {
+                      altText
+                      sourceUrl
+                    }
+                  }
+                }
+            services {
+              title
+              titileForm
+              subtitle
+              infoText
               img {
                 altText
                 sourceUrl
               }
-              gallery {
+              worktypes {
+                title
                 img {
                   altText
                   sourceUrl
                 }
               }
-            }
-          }
-        }
-        banner {
-          title
-          subtitle
-          services {
-            text
-            icon {
-              altText
-              sourceUrl
-            }
-          }
-          bg {
-             sourceUrl
-          }
-          contactForm {
-              subtitle
-              title
-          }
-        }
-            gallerySection {
-              title
-              galleryServices {
+              tablePrice {
+                tableList {
+                  price
+                  name
+                }
+                value
+                name
+              }
+              galleryList {
+                img {
+                  altText
+                  sourceUrl
+                }
+              }
+              servicesList {
+                subtitle
                 title
                 img {
                   altText
@@ -82,82 +121,43 @@ query FrontPage {
                 }
               }
             }
-        services {
-          title
-          titileForm
-          subtitle
-          infoText
-          img {
-            altText
-            sourceUrl
-          }
-          worktypes {
-            title
-            img {
-              altText
-              sourceUrl
+            saleForm {
+              title
+              subtitle
             }
-          }
-          tablePrice {
-            tableList {
-              price
-              name
+            priceForm {
+              subtitle
+              title
+              select {
+                name
+              }
             }
-            value
-            name
-          }
-          galleryList {
-            img {
-              altText
-              sourceUrl
+            advantages {
+              title
+              advantagesList {
+                description
+                title
+                icon {
+                  altText
+                  sourceUrl
+                }
+              }
             }
-          }
-          servicesList {
-            subtitle
-            title
-            img {
-              altText
-              sourceUrl
-            }
-          }
-        }
-        saleForm {
-          title
-          subtitle
-        }
-        priceForm {
-          subtitle
-          title
-          select {
-            name
-          }
-        }
-        advantages {
-          title
-          advantagesList {
-            description
-            title
-            icon {
-              altText
-              sourceUrl
-            }
-          }
-        }
-        contacts {
-          title
-          subtext
-          map
-          contactsList {
-            contactsContainer {
-              text
-              icon {
-                altText
-                sourceUrl
+            contacts {
+              title
+              subtext
+              map
+              contactsList {
+                contactsContainer {
+                  text
+                  icon {
+                    altText
+                    sourceUrl
+                  }
+                }
               }
             }
           }
         }
       }
     }
-  }
-}

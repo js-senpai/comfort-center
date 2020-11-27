@@ -1,19 +1,24 @@
 <template>
-    <main :class="classes">
-        <Header />
+    <main>
+        <Loader v-show="loading" />
+        <div v-show="!loading" :class="classes">
+            <Header />
 
-        <nuxt
-            keep-alive
-            :keep-alive-props="{ include: ['WpMenu', 'WpSeo'] }"
-        />
-        <Footer />
-        <transition name="slideDown">
-            <FormModal />
-        </transition>
-        <transition name="slideDown">
-            <ProductModal />
-        </transition>
-
+            <nuxt
+                    keep-alive
+                    :keep-alive-props="{ include: ['WpMenu', 'WpSeo'] }"
+            />
+            <Footer />
+            <transition name="slideDown">
+                <FormModal />
+            </transition>
+            <transition name="slideDown">
+                <ProductModal />
+            </transition>
+          <transition name="slideDown">
+            <ServiceModal />
+          </transition>
+        </div>
     </main>
 </template>
 <script>
@@ -26,9 +31,6 @@ import FormModal from "../components/global/FormModal/FormModal"
 
 export default {
     components: {FormModal},
-    fetch(){
-      console.log(this.$route)
-    },
     data() {
         let output = {
             winHeight: 0,
@@ -41,7 +43,10 @@ export default {
             output.winHeight = window.innerHeight
             output.winWidth = window.innerWidth
         }
-        return output
+        return {
+            loading: false,
+            output
+        }
     },
     computed: {
         classes() {
@@ -78,6 +83,7 @@ export default {
         },
     },
     mounted() {
+        this.loading = true
         // Throttle common events
         window.addEventListener("resize", _throttle(this.onResize, 32))
         window.addEventListener("scroll", _throttle(this.onScroll, 16))
@@ -95,6 +101,9 @@ export default {
                     break
             }
         })
+        setTimeout(()=>{
+            this.loading = false
+        },2000)
     },
     methods: {
         onResize() {

@@ -1,6 +1,6 @@
 <template>
     <div class="catalog__products-container">
-        <div  v-animate.repeat="'fadeInRight'"  v-if="products.length" class="catalog__products">
+        <div    v-if="products.length" class="catalog__products">
             <transition-group  tag="div"
                                name="item"
                                @after-enter="enter()"

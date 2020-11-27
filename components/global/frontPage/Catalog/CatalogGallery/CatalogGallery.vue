@@ -1,5 +1,5 @@
 <template>
-    <ul v-show="gallery.length" v-animate.repeat="'fadeInRight'" class="catalog__gallery">
+    <ul v-show="gallery.length"  class="catalog__gallery">
         <li v-for="item in gallery" :key="item.id" class="catalog__gallery-item">
             <img :src="item.img.sourceUrl" :alt="item.img.altText">
         </li>

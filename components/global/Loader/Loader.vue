@@ -6,8 +6,8 @@
 <style lang="sass">
 .loader
   width:  100%
-  height: 100%
   display: flex
   justify-content: center
   align-items: center
+  height: 100vh
 </style>

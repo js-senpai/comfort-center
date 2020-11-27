@@ -1,5 +1,5 @@
 <template>
-    <section v-animate.repeat="'fadeInLeft'"  class="advantages">
+    <section   class="advantages">
         <div class="container">
             <h2 v-show="title" class="title-section advantages-title">{{ title }}</h2>
             <ul v-show="advantagesList.length" class="advantages-list">

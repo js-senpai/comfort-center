@@ -16,7 +16,7 @@ export default {
                 content: "width=device-width, initial-scale=1",
             },
         ],
-        link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.png" }],
+        link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
         script: [
             {
                 src:
@@ -42,7 +42,6 @@ export default {
         color: "#000000",
         height: "3px",
     },
-
     /*
      ** Global CSS
      */

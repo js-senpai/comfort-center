@@ -13,7 +13,13 @@
             v-show="isRelative && !isHash"
             :to="relativeUrl"
             class="menu-link link-internal"
-            v-scroll-to="relativeUrl"
+            v-scroll-to="{
+                el: `${relativeUrl}`,
+                duration: 700,
+                lazy: false,
+                easing: 'ease-in-out',
+                offset: -100,
+           }"
             :class="item.cssClasses?item.cssClasses:''"
             @click.native="menuInteracted"
         >

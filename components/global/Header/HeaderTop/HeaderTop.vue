@@ -10,6 +10,7 @@
                 <Hamburger class="flex lg:hidden" />
             </div>
         </div>
+        <Social :socials="socials" class="container header__top-mobile-socials block lg:hidden" />
     </div>
 </template>
 <style lang="sass">

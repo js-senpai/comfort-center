@@ -1,5 +1,5 @@
 <template>
-    <ul v-show="productTypes.length" v-animate.repeat="'fadeInRight'"  class="catalog__types">
+    <ul v-show="productTypes.length"   class="catalog__types">
         <li v-for="(item,index) in productTypes" :key="index"  :class="{active: item.enable}" @click="setType(item.name)" class="catalog__types-item">{{ item.name }}</li>
     </ul>
 </template>

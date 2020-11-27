@@ -1,9 +1,9 @@
 <template>
     <section class="gallery-section">
         <div class="container gallery-section___container">
-            <h2 class="title-section gallery-section___title" v-animate.repeat="'fadeInLeft'" v-show="title">{{ title }}</h2>
+            <h2 class="title-section gallery-section___title"  v-show="title">{{ title }}</h2>
             <ul class="gallery-section__gallery-list" v-show="galleryList.length">
-                <li class="gallery-section__gallery-list-item" v-for="item in galleryList" :key="item.id"  v-animate.repeat="'fadeInLeft'">
+                <li class="gallery-section__gallery-list-item" v-for="item in galleryList" :key="item.id"  >
                     <div class="gallery-section__gallery-list-img">
                         <img :src="item.img.sourceUrl" :alt="item.img.altText">
                     </div>
