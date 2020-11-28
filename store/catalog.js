@@ -101,14 +101,12 @@ export const mutations = {
             const getProducts = state.allProducts.map((item)=>{
                 if(item.category == getCategory &&
                 JSON.stringify(getTypes) == JSON.stringify(item.typeMaterial)){
-                    if(getFilters.length>0){
-                        if(JSON.stringify(getFilters) == JSON.stringify(item.manufacturer)){
-                            return {
-                                ...item,
-                                id: stateHelper.generateId(),
-                            }
+                    if(JSON.stringify(getFilters) == JSON.stringify(item.manufacturer)){
+                        return {
+                            ...item,
+                            id: stateHelper.generateId(),
                         }
-                    } else {
+                    }else {
                         return {
                             ...item,
                             id: stateHelper.generateId()
@@ -147,39 +145,39 @@ export const mutations = {
     },
     // Load more products
     LOAD_MORE(state){
-      state.productsToShow += 3
+        state.productsToShow += 3
     },
     // Toggle modal
     TOGGLE_MODAL(state,{product,price,isActive}){
-      state.modal = isActive
-      if(product !== null && price !== null){
-          state.productModal.name = product
-          state.productModal.price = price
-          const getFilters = state.filters.filter((item)=>{
-              if(item.enable){
-                  return item
-              }
-          })
-          state.productModal.filter = Array.isArray(getFilters)?JSON.stringify(getFilters.map(({name})=>{
-              return name
-          }).join(',','')): JSON.stringify(getFilters.name)
-          const getCategories = state.categories.filter((item)=>{
-              if(item.enable){
-                  return item
-              }
-          })
-          state.productModal.category = Array.isArray(getCategories)?JSON.stringify(getCategories.map(({name})=>{
-              return name
-          }).join(',','')): JSON.stringify(getCategories.name)
-          const getType = state.productTypes.filter((item)=>{
-              if(item.enable){
-                  return item.name
-              }
-          })
-          state.productModal.type = Array.isArray(getType)?JSON.stringify(getType.map(({name})=>{
-              return name
-          }).join(',','')): JSON.stringify(getType.name)
-      }
+        state.modal = isActive
+        if(product !== null && price !== null){
+            state.productModal.name = product
+            state.productModal.price = price
+            const getFilters = state.filters.filter((item)=>{
+                if(item.enable){
+                    return item
+                }
+            })
+            state.productModal.filter = Array.isArray(getFilters)?JSON.stringify(getFilters.map(({name})=>{
+                return name
+            }).join(',','')): JSON.stringify(getFilters.name)
+            const getCategories = state.categories.filter((item)=>{
+                if(item.enable){
+                    return item
+                }
+            })
+            state.productModal.category = Array.isArray(getCategories)?JSON.stringify(getCategories.map(({name})=>{
+                return name
+            }).join(',','')): JSON.stringify(getCategories.name)
+            const getType = state.productTypes.filter((item)=>{
+                if(item.enable){
+                    return item.name
+                }
+            })
+            state.productModal.type = Array.isArray(getType)?JSON.stringify(getType.map(({name})=>{
+                return name
+            }).join(',','')): JSON.stringify(getType.name)
+        }
     },
     //Animation
     run(state) {
