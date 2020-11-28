@@ -173,22 +173,23 @@ export default {
         },
         // This and the transpile code below fix an issue with the spread operator in Safari 10.
         babel: {
-            presets({ envName }) {
-                const envTargets = {
-                    client: { browsers: ["last 2 versions"] },
-                    server: { node: "current" },
-                }
-                return [
-                    [
-                        "@nuxt/babel-preset-app",
-                        {
-                            targets: envTargets[envName],
-                            corejs: { version: 3 }
-                        }
-                    ]
-                ]
-            },
-            plugins: ["@babel/plugin-transform-runtime","@babel/plugin-proposal-object-rest-spread"],
+            // presets({ envName }) {
+            //     const envTargets = {
+            //         client: { browsers: ["last 2 versions"] },
+            //         server: { node: "current" },
+            //     }
+            //     return [
+            //         [
+            //             "@nuxt/babel-preset-app",
+            //             {
+            //                 targets: envTargets[envName],
+            //                 corejs: { version: 3 }
+            //             }
+            //         ]
+            //     ]
+            // },
+            // "@babel/plugin-transform-runtime": "^7.12.1",
+            plugins: ["@babel/plugin-proposal-object-rest-spread"],
         },
         transpile: ["ky", "vuex"],
         extend(config, ctx) {
