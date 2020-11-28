@@ -51,13 +51,22 @@
         "eslint": "^7.12.1",
         "eslint-plugin-vue": "^6.2.2",
         "ftp-deploy": "^2.3.8",
+        "imagemin-gifsicle": "^7.0.0",
+        "imagemin-mozjpeg": "^9.0.0",
+        "imagemin-pngquant": "^9.0.1",
+        "imagemin-svgo": "^8.0.0",
+        "lqip-loader": "^2.2.1",
         "node-sass": "^4.14.1",
         "nodemon": "^2.0.6",
         "prettier": "^2.1.2",
         "prettier-eslint": "^11.0.0",
+        "responsive-loader": "^2.2.0",
         "sass-loader": "^9.0.3",
+        "sharp": "^0.26.3",
+        "sqip-loader": "^1.0.0",
         "vue-svg-loader": "^0.16.0",
         "vue-template-compiler": "^2.6.12",
-        "webfontloader": "^1.6.28"
+        "webfontloader": "^1.6.28",
+        "webp-loader": "^0.6.0"
     }
 }
