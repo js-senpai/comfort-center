@@ -9,12 +9,12 @@
     "private": true,
     "scripts": {
         "dev": "nuxt",
-        "build-old": "nuxt build",
+        "build-old": "nuxt build --modern=client",
         "start-old": "nuxt start",
         "start": "npm run dev",
         "storybook": "nuxt storybook",
         "storybook-build": "nuxt storybook build",
-        "generate": "nuxt generate && node ftp.js",
+        "generate": "nuxt generate -m && node ftp.js",
         "heroku-postbuild": "npm run build"
     },
     "dependencies": {
