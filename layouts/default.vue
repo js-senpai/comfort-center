@@ -31,9 +31,6 @@ import FormModal from "../components/global/FormModal/FormModal"
 
 export default {
     components: {FormModal},
-    fetch(){
-        this.loading = true
-    },
     data() {
         let output = {
             winHeight: 0,
@@ -86,7 +83,6 @@ export default {
         },
     },
     mounted() {
-        this.loading = true
         // Throttle common events
         window.addEventListener("resize", _throttle(this.onResize, 32))
         window.addEventListener("scroll", _throttle(this.onScroll, 16))
