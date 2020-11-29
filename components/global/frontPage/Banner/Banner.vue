@@ -1,7 +1,7 @@
 <template>
     <section
         class="banner"
-        :style="{backgroundImage: `url(${bannerData.bg?bannerData.bg.sourceUrl:null})`}"
+        :lazy-background="bannerData.bg?bannerData.bg.sourceUrl:null"
     >
         <BannerTop />
         <BannerBottom />

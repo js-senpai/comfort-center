@@ -99,7 +99,9 @@ export default {
         pageTracking: true,
         pageViewEventName: "nuxtRoute",
         enabled: true,
-        debug: true,
+        debug: false,
+        noscript: true,
+        scriptDefer: true
     },
     /*
      * Build modules

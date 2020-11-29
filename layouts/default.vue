@@ -31,6 +31,9 @@ import FormModal from "../components/global/FormModal/FormModal"
 
 export default {
     components: {FormModal},
+    fetch(){
+        this.loading = true
+    },
     data() {
         let output = {
             winHeight: 0,
@@ -44,7 +47,7 @@ export default {
             output.winWidth = window.innerWidth
         }
         return {
-            loading: false,
+            loading: true,
             output
         }
     },
