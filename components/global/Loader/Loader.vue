@@ -1,6 +1,6 @@
 <template>
     <div class="loader">
-        <div class="loader-img"><img src="~static/images/icons/loader.svg" alt="loader"></div>
+        <div class="loader-img"><img src="~static/images/icons/loader.svg" alt="loader" data-not-lazy></div>
     </div>
 </template>
 <style lang="sass">

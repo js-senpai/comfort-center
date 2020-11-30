@@ -103,13 +103,11 @@ export const mutations = {
                 JSON.stringify(getTypes) == JSON.stringify(item.typeMaterial)){
                     if(JSON.stringify(getFilters) == JSON.stringify(item.manufacturer)){
                         return {
-                            ...item,
-                            id: stateHelper.generateId(),
+                            ...item
                         }
                     }else {
                         return {
-                            ...item,
-                            id: stateHelper.generateId()
+                            ...item
                         }
                     }
                 }

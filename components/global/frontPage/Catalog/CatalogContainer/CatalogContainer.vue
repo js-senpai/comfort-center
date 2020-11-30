@@ -15,11 +15,17 @@
     import CatalogNav from "./CatalogNav/CatalogNav"
     import CatalogTypes from "./CatalogTypes/CatalogTypes"
     import CatalogProducts from "./CatalogProducts/CatalogProducts"
+    import stateHelper from "../../../../../helpers/stateHelper"
     export default {
         components: {CatalogProducts, CatalogTypes, CatalogNav},
         async fetch(){
             const data = await this.$graphql.request(FRONT_PAGE)
-            const catalog = _get(data, "nodeByUri.mainPage.catalog.catalogList", {})
+            const catalog = _get(data, "nodeByUri.mainPage.catalog.catalogList", {}).map((item)=>{
+              return {
+                ...item,
+                id: stateHelper.generateId(),
+              }
+            })
             await this.setCatalog(catalog)
         },
         methods: {

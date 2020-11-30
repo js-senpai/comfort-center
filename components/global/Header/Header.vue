@@ -1,35 +1,39 @@
 <template>
-    <header class="header" :class="{fixed: isFixed}">
-        <div class="header-overlay" :class="{active:this.$store.state.menuOpened}">
-            <div class="header-container">
-                <HeaderTop />
-                <HeaderBottom />
+    <fixed-header
+        :threshold="400"
+        @change="updateFixedStatus"
+    >
+        <header class="header">
+            <div
+                class="header-overlay"
+                :class="{active:this.$store.state.menuOpened}"
+            >
+                <div class="header-container">
+                    <HeaderTop />
+                    <HeaderBottom />
+                </div>
             </div>
-        </div>
-    </header>
+        </header>
+    </fixed-header>
 </template>
 <style lang="sass">
-    @import "sass/header"
+@import "sass/header"
 </style>
 <script>
-    export default {
-        data(){
-            return {
-                isFixed: false
-            }
-        },
-        mounted() {
-            // const currentCounter = this.$el
-            // // const counterTop = currentCounter.getBoundingClientRect().top
-            // const these = this
-            window.addEventListener('scroll',  () => {
-                if (window.pageYOffset > 800) {
-                    this.isFixed = true
-                    // this.removeEventListener('scroll', onScroll)
-                } else {
-                    this.isFixed = false
-                }
-            })
+import FixedHeader from 'vue-fixed-header'
+export default {
+    components: {
+        FixedHeader
+    },
+    data(){
+        return {
+            isFixed: false
+        }
+    },
+    methods: {
+        updateFixedStatus(next){
+            this.isFixed = next
         }
     }
+}
 </script>

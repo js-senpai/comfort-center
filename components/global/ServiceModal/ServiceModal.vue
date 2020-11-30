@@ -14,6 +14,7 @@
           <!-- Modal Content-->
           <transition name="fade">
             <form v-if="!mailSent" @submit.prevent="sendForm" class="contact-form__container serviceModal__form-container">
+              <div class="flex w-full h-auto py-1  justify-center items-center text-center font-bold text-xl">{{ modal.title }}</div>
               <div class="serviceModal__form-container">
                 <div class="contact-form__item">
                   <label class="contact-form__label">Имя</label>
