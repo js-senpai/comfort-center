@@ -1,20 +1,24 @@
 .social-list-item
   @apply mb-4
-  &:first-child
-    display: none
   a
     @apply flex items-center
 .social-list-item__icon
   margin-right: 10px
 .header__top-mobile-socials
   .social-list-item
+    margin-top: 1rem
     .social-list-item__icon
       display: none
     &:first-child
       display: block
+      font-weight: bold
+      font-size: 1.2rem
       span
         width: 100%
         text-align: center
     &:last-child
       display: none
+.header-overlay.active
+  .header__top-mobile-socials
+    display: none
 @import "media"
