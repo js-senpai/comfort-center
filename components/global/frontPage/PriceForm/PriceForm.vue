@@ -16,7 +16,7 @@
                               placeholder="Введите ваше имя"
                       >
                       <div v-show="!$v.name.checkName" class="contact-form__error">Введите корректное имя</div>
-                      <div v-show="$v.name.$error" class="contact-form__error">Это поле обязательно к заполнению</div>
+                      <div v-show="errorInput.name" class="contact-form__error">Это поле обязательно к заполнению</div>
                   </div>
                   <div class="contact-form__item">
                       <label
@@ -31,7 +31,7 @@
                               placeholder="+7(__)__-__-__"
                       />
                       <div class="contact-form__error" v-show="!$v.tel.minLength">Введите корректный мобильный телефон</div>
-                      <div v-show="$v.tel.$error" class="contact-form__error">Это поле обязательно к заполнению</div>
+                      <div v-show="errorInput.tel" class="contact-form__error">Это поле обязательно к заполнению</div>
                   </div>
                   <div class="contact-form__item">
                       <label
@@ -47,7 +47,7 @@
                               :class="{ error: !$v.email.email}"
                       />
                       <div class="contact-form__error" v-show="!$v.email.email">Введите корректную почту</div>
-                      <div v-show="$v.email.$error" class="contact-form__error">Это поле обязательно к заполнению</div>
+                      <div v-show="errorInput.email" class="contact-form__error">Это поле обязательно к заполнению</div>
                   </div>
                   <div class="contact-form__item">
                       <v-select v-model="selected" placeholder="Выберите услугу" label="name" :options="select" class="contact-form__select" >
@@ -70,12 +70,12 @@
                   <div class="contact-form__item priceForm__input-checkbox">
                       <label class="contact-form__checkbox-container">
                           <div class="contact-form__checkbox-wrapper focus-within:border-blue-500">
-                              <input @change="checkCheckbox($event.target)" type="checkbox" class="contact-form__checkbox" :checked="check" required>
+                              <input @change="checkCheckbox($event.target)" type="checkbox" class="contact-form__checkbox" :checked="check">
                               <svg class="fill-current hidden w-4 h-4 text-green-500 pointer-events-none" viewBox="0 0 20 20"><path d="M0 11l2-2 5 5L18 3l2 2L7 18z"/></svg>
                           </div>
                           <div class="contact-form__select-none">Я принимаю <a href="/policy.pdf" target="_blank">соглашение сайта</a> об обработке персональных данных</div>
                       </label>
-                      <span class="contact-form__error" v-show="errorCheck">Необходимо дать согласие на обработку персональных данных</span>
+                      <span class="contact-form__error" v-show="errorInput.checkbox">Необходимо дать согласие на обработку персональных данных</span>
                   </div>
               </div>
               <span class="contact-form__error" v-show="error">Произошла ошибка во время отправки формы.{{ errorText }}</span>
@@ -124,6 +124,12 @@
                     role: 'presentation',
                     class: 'vs__open-indicator',
                 },
+              errorInput: {
+                name: false,
+                tel: false,
+                email: false,
+                checkbox: false
+              }
             }
         },
         watch:{
@@ -162,6 +168,26 @@
             /* Отправка формы */
             async sendForm(){
                 this.$v.$touch()
+                if(this.$v.name.$error){
+                  this.errorInput.name = true
+                } else {
+                  this.errorInput.name = false
+                }
+                if(this.$v.tel.$error){
+                  this.errorInput.tel = true
+                } else {
+                  this.errorInput.tel = false
+                }
+                if(this.$v.email.$error){
+                  this.errorInput.email = true
+                } else {
+                  this.errorInput.email = false
+                }
+                if(!this.check){
+                  this.errorInput.checkbox = true
+                } else {
+                  this.errorInput.checkbox = false
+                }
                 if (!this.$v.$invalid && this.check) {
                     try {
                         const response = await this.$axios.$post(`${process.env.MAIN_URL}240/feedback`,toFormData({

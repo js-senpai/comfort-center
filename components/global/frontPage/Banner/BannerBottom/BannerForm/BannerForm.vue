@@ -27,7 +27,7 @@
                             placeholder="Введите ваше имя"
                     >
                     <div class="contact-form__error" v-show="!$v.name.checkName">Введите корректное имя</div>
-                    <div v-show="$v.name.$error" class="contact-form__error">Это поле обязательно к заполнению</div>
+                    <div v-show="errorInput.name" class="contact-form__error">Это поле обязательно к заполнению</div>
                 </div>
                 <div class="contact-form__item">
                     <label
@@ -42,7 +42,7 @@
                             placeholder="+7(__)__-__-__"
                     />
                     <div class="contact-form__error" v-show="!$v.tel.minLength">Введите корректный мобильный телефон</div>
-                    <div v-show="$v.tel.$error" class="contact-form__error">Это поле обязательно к заполнению</div>
+                    <div v-show="errorInput.tel" class="contact-form__error">Это поле обязательно к заполнению</div>
                 </div>
                 <div class="contact-form__item">
                     <label class="contact-form__checkbox-container">
@@ -52,7 +52,7 @@
                         </div>
                         <div class="contact-form__select-none">Я принимаю <a href="/policy.pdf" target="_blank">соглашение сайта</a> об обработке персональных данных</div>
                     </label>
-                    <span class="contact-form__error" v-show="errorCheck">Необходимо дать согласие на обработку персональных данных</span>
+                    <span class="contact-form__error" v-show="errorInput.checkbox">Необходимо дать согласие на обработку персональных данных</span>
                 </div>
                 <div class="contact-form__item">
                     <button type="submit" class="contact-form__submit">Отправить</button>
@@ -89,6 +89,11 @@
                 errorCheck: false,
                 error: null,
                 errorText: null,
+                errorInput: {
+                  name: false,
+                  tel: false,
+                  checkbox: false
+                }
             }
         },
         watch:{
@@ -120,6 +125,21 @@
             /* Отправка формы */
             async sendForm(){
               this.$v.$touch()
+              if(this.$v.name.$error){
+                this.errorInput.name = true
+              } else {
+                this.errorInput.name = false
+              }
+              if(this.$v.tel.$error){
+                this.errorInput.tel = true
+              } else {
+                this.errorInput.tel = false
+              }
+              if(!this.check){
+                this.errorInput.checkbox = true
+              } else {
+                this.errorInput.checkbox = false
+              }
               if (!this.$v.$invalid && this.check) {
                 try {
                   const response = await this.$axios.$post(`${process.env.MAIN_URL}93/feedback`,toFormData({name:this.name,tel:this.tel}))

@@ -89,7 +89,11 @@ export default {
         "nuxt-graphql-request",
         "@nuxtjs/style-resources",
         // "@nuxtjs/sitemap",
-        "nuxt-lazy-load",
+        ['nuxt-lazy-load', {
+            native: true,
+            // Default image must be in the static folder
+            defaultImage: '/images/lazy-bg.jpg',
+        }],
         "@nuxtjs/axios",
         ['vue-scrollto/nuxt', { duration: 1000 }],
         '@nuxtjs/gtm'

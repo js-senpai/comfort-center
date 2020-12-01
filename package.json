@@ -8,14 +8,14 @@
     "author": "Funkhaus",
     "private": true,
     "scripts": {
-        "dev": "node --max-old-space-size=4096 node_modules/nuxt/bin/nuxt.js",
+        "dev": "node --max-old-space-size=900 node_modules/nuxt/bin/nuxt.js",
         "build-old": "nuxt build",
-        "start-old": "node --max-old-space-size=4096 node_modules/nuxt/bin/nuxt.js start",
-        "start": "node --max-old-space-size=4096 node_modules/nuxt/bin/nuxt.js",
+        "start-old": "node --max-old-space-size=900 node_modules/nuxt/bin/nuxt.js start",
+        "start": "node --max-old-space-size=900 node_modules/nuxt/bin/nuxt.js",
         "storybook": "nuxt storybook",
         "storybook-build": "nuxt storybook build",
-        "generate": "node --max-old-space-size=4096 node_modules/nuxt/bin/nuxt.js generate -m  && node ftp.js",
-        "heroku-postbuild": "node --max-old-space-size=4096 node_modules/nuxt/bin/nuxt.js build"
+        "generate": "node --max-old-space-size=900 node_modules/nuxt/bin/nuxt.js generate  && node ftp.js",
+        "heroku-postbuild": "node --max-old-space-size=900 node_modules/nuxt/bin/nuxt.js build"
     },
     "dependencies": {
         "@nuxtjs/axios": "^5.12.2",

@@ -53,17 +53,17 @@
                       placeholder="+7(__)__-__-__"
                   />
                   <div class="contact-form__error" v-show="!$v.tel.minLength">Введите корректный мобильный телефон</div>
-                  <div v-show="$v.tel.$error" class="contact-form__error">Это поле обязательно к заполнению</div>
+                  <div v-show="errorInput.tel" class="contact-form__error">Это поле обязательно к заполнению</div>
                 </div>
                 <div class="contact-form__item serviceModal__input-checkbox">
                   <label class="contact-form__checkbox-container">
                     <div class="contact-form__checkbox-wrapper focus-within:border-blue-500">
-                      <input @change="checkCheckbox($event.target)" type="checkbox" class="contact-form__checkbox" :checked="check" required>
+                      <input @change="checkCheckbox($event.target)" type="checkbox" class="contact-form__checkbox" :checked="check">
                       <svg class="fill-current hidden w-4 h-4 text-green-500 pointer-events-none" viewBox="0 0 20 20"><path d="M0 11l2-2 5 5L18 3l2 2L7 18z"/></svg>
                     </div>
                     <div class="contact-form__select-none">Я принимаю <a href="/policy.pdf" target="_blank">соглашение сайта</a> об обработке персональных данных</div>
                   </label>
-                  <span class="contact-form__error" v-show="errorCheck">Необходимо дать согласие на обработку персональных данных</span>
+                  <span class="contact-form__error" v-show="errorInput.checkbox">Необходимо дать согласие на обработку персональных данных</span>
                 </div>
                 <div class="contact-form__item serviceModal__submit-container">
                   <button type="submit" class="contact-form__submit">Отправить</button>
@@ -99,7 +99,11 @@ export default {
       error: false,
       errorText: null,
       mailSent: false,
-      thxMessage: ''
+      thxMessage: '',
+      errorInput: {
+        tel: false,
+        checkbox: false
+      }
     }
   },
   computed: {
@@ -133,6 +137,16 @@ export default {
     /* Отправка формы */
     async sendForm(){
       this.$v.$touch()
+      if(this.$v.tel.$error){
+        this.errorInput.tel = true
+      } else {
+        this.errorInput.tel = false
+      }
+      if(!this.check){
+        this.errorInput.checkbox = true
+      } else {
+        this.errorInput.checkbox = false
+      }
       if(!this.$v.$invalid){
         try {
           const response = await this.$axios.$post(`${process.env.MAIN_URL}178/feedback`,toFormData({title:this.modal.title,file:this.modal.file,name: this.name !== null?this.name:'',phone: this.tel,email: this.email !== null?this.email:''}))

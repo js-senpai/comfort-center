@@ -51,6 +51,7 @@
             ...mapActions({
                 run: 'catalog/run',
                 enter: 'catalog/enter',
+                leave: 'catalog/leave',
             }),
             ...mapMutations({
                 loadMore: 'catalog/LOAD_MORE',

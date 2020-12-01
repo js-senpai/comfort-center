@@ -189,7 +189,10 @@ export const mutations = {
         }
     },
     leave(state) {
-        state.idx = Math.max(0, state.idx - 1)
+        if(state.filteredProducts.length){
+            state.idx = Math.max(0, state.idx - 1)
+        }
+
     },
 }
 export const actions = {

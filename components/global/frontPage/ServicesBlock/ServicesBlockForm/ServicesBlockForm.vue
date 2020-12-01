@@ -48,7 +48,6 @@
         methods: {
             getFile(event){
                 this.file = this.$refs.file.files[0]
-                console.log(this.file)
             },
             ...mapMutations({
               TOGGLE_MODAL: 'service/TOGGLE_MODAL'
