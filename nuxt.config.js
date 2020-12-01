@@ -90,9 +90,7 @@ export default {
         "@nuxtjs/style-resources",
         // "@nuxtjs/sitemap",
         ['nuxt-lazy-load', {
-            native: true,
-            // Default image must be in the static folder
-            defaultImage: '/images/lazy-bg.jpg',
+            native: true
         }],
         "@nuxtjs/axios",
         ['vue-scrollto/nuxt', { duration: 1000 }],

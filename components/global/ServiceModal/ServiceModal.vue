@@ -69,7 +69,6 @@
                   <button type="submit" class="contact-form__submit">Отправить</button>
                 </div>
               </div>
-              <span class="contact-form__error" v-show="error">Произошла ошибка во время отправки формы.{{ errorText }}</span>
             </form>
             <!-- End of Modal Content-->
             <div v-else class="flex w-full h-auto py-10 px-2 justify-center items-center  text-center font-bold text-xl">
@@ -147,7 +146,7 @@ export default {
       } else {
         this.errorInput.checkbox = false
       }
-      if(!this.$v.$invalid){
+      if(!this.$v.$invalid && this.check){
         try {
           const response = await this.$axios.$post(`${process.env.MAIN_URL}178/feedback`,toFormData({title:this.modal.title,file:this.modal.file,name: this.name !== null?this.name:'',phone: this.tel,email: this.email !== null?this.email:''}))
           if(response.status !== "mail_sent"){

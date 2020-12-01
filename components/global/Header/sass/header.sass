@@ -4,12 +4,16 @@
   transition: top 1s ease-in-out
   opacity: 1
   top: -1000px
+  .header__top-mobile-socials
+    display: none
   &.vue-fixed-header--isFixed
     width: 100%
     top: 0
     right: 0
     opacity: 0.98
     position: fixed
+    .header__top-mobile-socials
+      display: block
     .header__top-container
       display: none
       padding-top: 10px
