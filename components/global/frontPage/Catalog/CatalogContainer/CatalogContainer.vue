@@ -26,7 +26,7 @@
                 id: stateHelper.generateId(),
               }
             })
-            await this.setCatalog(catalog)
+            this.setCatalog(catalog)
         },
         methods: {
             ...mapActions({

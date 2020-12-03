@@ -73,7 +73,7 @@
     import FRONT_PAGE from "~/gql/queries/FrontPage"
     //Validation
     import { minLength, required } from 'vuelidate/lib/validators'
-    import {checkName,toFormData} from "../../../../../../helpers/formHelper"
+    import {checkInputs, checkName, toFormData} from "../../../../../../helpers/formHelper"
 
     export default {
         async fetch() {
@@ -93,7 +93,12 @@
                   name: false,
                   tel: false,
                   checkbox: false
-                }
+                },
+                validateInput: {
+                  name: false,
+                  tel: false,
+                  checkbox: false
+                },
             }
         },
         watch:{
@@ -125,6 +130,11 @@
             /* Отправка формы */
             async sendForm(){
               this.$v.$touch()
+              // this.errorInput.name = checkInputs(this.$v.name.$error)
+              // this.errorInput.tel = checkInputs(this.$v.tel.$error)
+              // this.errorInput.checkbox = checkInputs(!this.check)
+              // this.validateInput.name = checkInputs(this.$v.name.checkName)
+              // this.validateInput.tel = checkInputs(this.$v.tel.minLength)
               if(this.$v.name.$error){
                 this.errorInput.name = true
               } else {
@@ -140,6 +150,7 @@
               } else {
                 this.errorInput.checkbox = false
               }
+
               if (!this.$v.$invalid && this.check) {
                 try {
                   const response = await this.$axios.$post(`${process.env.MAIN_URL}93/feedback`,toFormData({name:this.name,tel:this.tel}))

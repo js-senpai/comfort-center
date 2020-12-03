@@ -189,6 +189,7 @@ export const mutations = {
     //Animation
     run(state) {
         if(state.filteredProducts.length && state.idx == 0){
+            console.log('run')
             state.idx += ({ 0: 1, [state.filteredProducts.length]: -1 })[state.idx]
         }
     },
@@ -212,13 +213,12 @@ export const actions = {
     TOGGLE_FILTERS({commit,dispatch},payload){
         commit('TOGGLE_FILTERS',payload)
         dispatch('FILTER_PRODUCTS')
-        commit('run')
+        dispatch('run')
     },
     // Set catalog
     SET_CATALOG({commit,dispatch}, payload) {
         commit('SET_CATALOG',payload)
         dispatch('FILTER_PRODUCTS')
-        commit('run')
     },
     // Generate filtered products
     FILTER_PRODUCTS({commit}){

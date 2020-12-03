@@ -47,7 +47,6 @@
             // Toggle Filters
             async getValue(event){
                 this.toggleFilters(event)
-                this.run(this.products)
             }
         }
     }

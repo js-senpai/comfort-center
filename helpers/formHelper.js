@@ -6,3 +6,6 @@ export const toFormData = (emailBody) => {
     }
     return form
 }
+export const checkInputs = (rules) =>{
+    return !!rules
+}
