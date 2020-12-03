@@ -1,4 +1,17 @@
 import stateHelper from "../helpers/stateHelper"
+const findEqualObjects =(someArray, otherArray) =>{
+    let checkArray = []
+    for(let item of someArray){
+        for(let otherItem of otherArray){
+            if(otherItem == item){
+                checkArray.push('true')
+            }else {
+                checkArray.push('false')
+            }
+        }
+    }
+    return checkArray.includes('true')
+}
 export const state = () => ({
     filters: [],
     filteredProducts: [],
@@ -48,7 +61,6 @@ export const mutations = {
     },
     // Set catalog data
     SET_CATALOG(state,payload){
-
         // Set categories
         if(payload !== undefined){
             const categories = payload.map(({category})=> category)
@@ -77,7 +89,7 @@ export const mutations = {
     // Generate filtered products
     FILTER_PRODUCTS(state){
         if(state.allProducts.length){
-            const [getCategory] = state.categories.map((item)=>{
+            const getCategory = state.categories.map((item)=>{
                 if(item.enable){
                     return item.name
                 }
@@ -99,15 +111,12 @@ export const mutations = {
                 return x !== undefined && x !== null
             })
             const getProducts = state.allProducts.map((item)=>{
-                if(item.category == getCategory &&
-                JSON.stringify(getTypes) == JSON.stringify(item.typeMaterial)){
-                    if(JSON.stringify(getFilters) == JSON.stringify(item.manufacturer)){
-                        return {
-                            ...item
-                        }
-                    }else {
-                        return {
-                            ...item
+                if(item.category == getCategory){
+                    if(findEqualObjects(item.typeMaterial,getTypes)){
+                        if(findEqualObjects(item.manufacturer,getFilters)){
+                            return {
+                                ...item
+                            }
                         }
                     }
                 }
@@ -192,7 +201,6 @@ export const mutations = {
         if(state.filteredProducts.length){
             state.idx = Math.max(0, state.idx - 1)
         }
-
     },
 }
 export const actions = {
@@ -210,6 +218,7 @@ export const actions = {
     SET_CATALOG({commit,dispatch}, payload) {
         commit('SET_CATALOG',payload)
         dispatch('FILTER_PRODUCTS')
+        commit('run')
     },
     // Generate filtered products
     FILTER_PRODUCTS({commit}){
@@ -219,13 +228,13 @@ export const actions = {
     CHANGE_CATEGORY({commit,dispatch},name){
         commit('CHANGE_CATEGORY',name)
         dispatch('FILTER_PRODUCTS')
-        commit('run')
+        dispatch('run')
     },
     // Change types
     CHANGE_TYPE({commit,dispatch},name) {
         commit('CHANGE_TYPE',name)
         dispatch('FILTER_PRODUCTS')
-        commit('run')
+        dispatch('run')
     },
     // Animations
     //Animation

@@ -6,7 +6,7 @@
                                @after-enter="enter()"
                                class="catalog_products-list">
                 <div  v-for="(item,index) in products" v-if="(index<idx)&&(index<productsToShow)" :key="item.id" :data-id="item.id" class="catalog__products-list-item">
-                    <header class="catalog__products-header" :data-category="item.manufacturer">
+                    <header class="catalog__products-header">
                         <div class="catalog__products-img">
                             <img :src="item.img.sourceUrl" :alt="item.img.altText" />
                         </div>

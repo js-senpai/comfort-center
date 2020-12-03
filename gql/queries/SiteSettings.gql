@@ -10,10 +10,6 @@ query SiteSettings {
     # NOTE You need ACF Pro installed to use Site Options
     acfSettings: siteOptions {
         acfSiteOptions {
-            socialMedia {
-                platform
-                url
-            }
             googleAnalytics {
                 code
             }

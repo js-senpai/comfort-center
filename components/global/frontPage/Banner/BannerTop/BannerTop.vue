@@ -5,15 +5,11 @@
                 <h1
                         v-show="title"
                         class="title banner__top-title"
-                >
-                    {{ title }}
-                </h1>
+                v-html="title" />
                 <h4
                         v-show="subtitle"
                         class="banner__top-subtitle"
-                >
-                    {{ subtitle }}
-                </h4>
+                v-html="subtitle" />
             </div>
         </div>
     </div>
