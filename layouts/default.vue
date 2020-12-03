@@ -28,7 +28,6 @@ import _kebabCase from "lodash/kebabCase"
 import { decodeHtmlEntities } from "~/utils/tools"
 import FormModal from "../components/global/FormModal/FormModal"
 
-
 export default {
     components: {FormModal},
     data() {
@@ -83,6 +82,9 @@ export default {
         },
     },
     mounted() {
+      // if (this.$route.hash) {
+      //   this.$router.push({ hash: '' })
+      // }
         // Throttle common events
         window.addEventListener("resize", _throttle(this.onResize, 32))
         window.addEventListener("scroll", _throttle(this.onScroll, 16))
@@ -100,8 +102,31 @@ export default {
                     break
             }
         })
+
         setTimeout(()=>{
             this.loading = false
+            if (this.$route.hash) {
+              const options = {
+                container: 'body',
+                easing: 'ease-in',
+                lazy: false,
+                offset: -60,
+                force: true,
+                cancelable: true,
+                onStart: function (element) {
+                  // scrolling started
+                },
+                onDone: function (element) {
+                  // scrolling is done
+                },
+                onCancel: function () {
+                  // scrolling has been interrupted
+                },
+                x: false,
+                y: true
+              }
+              this.$scrollTo(this.$route.hash,500,options)
+            }
         },2000)
     },
     methods: {

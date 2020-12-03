@@ -25,7 +25,6 @@ export default {
             },
         ],
     },
-
     /*
      ** Default transition for all pages
      */
@@ -143,7 +142,6 @@ export default {
         linkPrefetchedClass: "link-prefetched",
         trailingSlash: true,
     },
-
     /*
      ** Server side middleware
      */
