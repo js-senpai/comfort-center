@@ -26,7 +26,7 @@
                       placeholder="Введите ваше имя"
                       v-model="$v.name.$model"
                   >
-                  <div class="contact-form__error" v-show="!$v.name.checkName">Введите корректное имя</div>
+                  <!-- <div class="contact-form__error" v-show="!$v.name.checkName">Введите корректное имя</div> -->
                 </div>
                 <div class="contact-form__item">
                   <label class="contact-form__label">Email</label>
@@ -38,7 +38,7 @@
                       placeholder="Введите ваш email"
                       v-model="$v.email.$model"
                   >
-                  <div class="contact-form__error" v-show="!$v.email.email">Введите корректное имя</div>
+                  <!-- <div class="contact-form__error" v-show="!$v.email.email">Введите корректное имя</div> -->
                 </div>
                 <div class="contact-form__item">
                   <label
@@ -52,8 +52,8 @@
                       class="contact-form__input tel"
                       placeholder="+7(__)__-__-__"
                   />
-                  <div class="contact-form__error" v-show="!$v.tel.minLength">Введите корректный мобильный телефон</div>
-                  <div v-show="errorInput.tel" class="contact-form__error">Это поле обязательно к заполнению</div>
+                  <!-- <div class="contact-form__error" v-show="!$v.tel.minLength">Введите корректный мобильный телефон</div> -->
+                  <div v-show="errorInput.tel" class="contact-form__error">Введите корректный мобильный телефон</div>
                 </div>
                 <div class="contact-form__item serviceModal__input-checkbox">
                   <label class="contact-form__checkbox-container">

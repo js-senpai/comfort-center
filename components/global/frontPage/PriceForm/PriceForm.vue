@@ -15,8 +15,8 @@
                               class="contact-form__input name"
                               placeholder="Введите ваше имя"
                       >
-                      <div v-show="!$v.name.checkName" class="contact-form__error">Введите корректное имя</div>
-                      <div v-show="errorInput.name" class="contact-form__error">Это поле обязательно к заполнению</div>
+                      <!-- <div v-show="!$v.name.checkName" class="contact-form__error">Введите корректное имя</div> -->
+                      <div v-show="errorInput.name" class="contact-form__error">Введите корректное имя</div>
                   </div>
                   <div class="contact-form__item">
                       <label
@@ -30,8 +30,8 @@
                               class="contact-form__input tel"
                               placeholder="+7(__)__-__-__"
                       />
-                      <div class="contact-form__error" v-show="!$v.tel.minLength">Введите корректный мобильный телефон</div>
-                      <div v-show="errorInput.tel" class="contact-form__error">Это поле обязательно к заполнению</div>
+                      <!-- <div class="contact-form__error" v-show="!$v.tel.minLength">Введите корректный мобильный телефон</div> -->
+                      <div v-show="errorInput.tel" class="contact-form__error">Введите корректный мобильный телефон</div>
                   </div>
                   <div class="contact-form__item">
                       <label
@@ -46,8 +46,8 @@
                               ref="priceEmail"
                               :class="{ error: !$v.email.email}"
                       />
-                      <div class="contact-form__error" v-show="!$v.email.email">Введите корректную почту</div>
-                      <div v-show="errorInput.email" class="contact-form__error">Это поле обязательно к заполнению</div>
+                      <!-- <div class="contact-form__error" v-show="!$v.email.email">Введите корректную почту</div> -->
+                      <div v-show="errorInput.email" class="contact-form__error">Введите корректную почту</div>
                   </div>
                   <div class="contact-form__item">
                       <v-select v-model="selected" placeholder="Выберите услугу" label="name" :options="select" class="contact-form__select" >
