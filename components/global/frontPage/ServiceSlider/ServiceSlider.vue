@@ -7,7 +7,7 @@
             <li v-for="(item,index) in serviceData.sliderTab" class="tabNav-item" :key="item.id" @click="changeTab($event.target,index)" :class="{active:index === 0}">{{ item.name }}</li>
         </ul>
           <div  v-for="(itemTab,indexTab) in sliderTab" :key="itemTab.id"  v-if="currentIndex === indexTab"  :id="`tab-${indexTab}`"  class="serviceSlider-tab-container">
-            <VueSlickCarousel v-show="itemTab.slider" :arrows="false" :dots="false" :ref="`slick${indexTab}`" class="serviceSlider">
+            <VueSlickCarousel v-show="itemTab.slider" :fade="true" lazyLoad="ondemand" :speed="1000" :arrows="false" :dots="false" :ref="`slick${indexTab}`" class="serviceSlider">
               <div v-for="(slideItem,indexItem) in itemTab.slider" :key="indexItem" class="serviceSlider-item">
                 <div class="serviceSlider-tab-header">
                   <div v-show="slideItem.img" class="serviceSlider-tab-header__img">
@@ -82,9 +82,6 @@
               serviceData: {},
               sliderTab: {},
               mainImg: '',
-              settings: {
-                  prevArrow: '#test'
-              },
               currentIndex: 0
           }
       },

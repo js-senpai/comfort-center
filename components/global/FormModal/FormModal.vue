@@ -1,6 +1,10 @@
 <template>
-    <div class="formModal-overlay" v-show="modal.enable" :class="{active: modal.enable}" @click="TOGGLE_MODAL({enable: false,message: null})">
-        <transition name="slideUp">
+    <div class="formModal-overlay" v-show="modal.enable" @click="TOGGLE_MODAL({enable: false,message: null})">
+        <transition
+            name="slide"
+            enter-active-class="slideInUp"
+            leave-active-class="slideOutDown"
+        >
             <div id="myModal" class="formModal h-auto w-11/12 md:w-1/2 p-5   rounded-md" v-if=" modal.enable" :class="{active: modal.enable}">
 
                 <div class="flex flex-col w-full h-auto ">

@@ -9,15 +9,9 @@
                     :keep-alive-props="{ include: ['WpMenu', 'WpSeo'] }"
             />
             <Footer />
-            <transition name="slideDown">
-                <FormModal />
-            </transition>
-            <transition name="slideDown">
-                <ProductModal />
-            </transition>
-          <transition name="slideDown">
+            <FormModal />
+            <ProductModal />
             <ServiceModal />
-          </transition>
         </div>
     </main>
 </template>
