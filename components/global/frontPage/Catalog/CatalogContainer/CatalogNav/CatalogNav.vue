@@ -1,6 +1,6 @@
 <template>
     <ul  class="tabNav catalogTabNav" v-show="categories.length">
-        <li v-for="item in categories" class="tabNav-item catalogTabNavItem" :key="item.id" :class="{active: item.enable}" @click="setCategory(item.name)">{{ item.name }}</li>
+        <li v-for="item in categories"  class="tabNav-item catalogTabNavItem" :key="item.id" :class="{active: item.enable}" @click="setCategory(item.name)">{{ item.name }}</li>
     </ul>
 </template>
 <style lang="sass">

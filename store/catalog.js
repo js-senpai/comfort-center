@@ -2,12 +2,10 @@ import stateHelper from "../helpers/stateHelper"
 const findEqualObjects =(someArray, otherArray) =>{
     let checkArray = []
     for(let item of someArray){
-        for(let otherItem of otherArray){
-            if(otherItem == item){
-                checkArray.push('true')
-            }else {
-                checkArray.push('false')
-            }
+        if(otherArray.indexOf(item) !== -1){
+            checkArray.push('true')
+        } else {
+            checkArray.push('false')
         }
     }
     return checkArray.includes('true')
@@ -45,8 +43,6 @@ export const mutations = {
     },
     // Toggle Filters
     TOGGLE_FILTERS(state,name){
-        state.idx = 0
-        state.productsToShow = 6
         if(state.filters.length){
             state.filters = state.filters.map(item=>{
                 if(item.name == name){
@@ -72,31 +68,17 @@ export const mutations = {
                 }
             })
             state.categories[0].enable = true
-            // Set product types
-            const newTypes =  payload.map(({typeMaterial})=>typeMaterial).flat(1)
-            state.productTypes = [...new Map(newTypes.map(obj => [JSON.stringify(obj), obj])).values()].map((item)=>{
-                return {
-                    name: item,
-                    enable: false,
-                    id: stateHelper.generateId()
-                }
-            })
-            state.productTypes[0].enable = true
+
             // Set all products
             state.allProducts = payload
         }
     },
     // Generate filtered products
-    FILTER_PRODUCTS(state){
+    FILTER_PRODUCTS(state,firstLoad=false){
+        state.idx = 0
+        state.productsToShow = 6
         if(state.allProducts.length){
             const getCategory = state.categories.map((item)=>{
-                if(item.enable){
-                    return item.name
-                }
-            }).filter((x) => {
-                return x !== undefined && x !== null
-            })
-            const getTypes = state.productTypes.map((item)=>{
                 if(item.enable){
                     return item.name
                 }
@@ -110,26 +92,82 @@ export const mutations = {
             }).filter((x) => {
                 return x !== undefined && x !== null
             })
-            const getProducts = state.allProducts.map((item)=>{
-                if(item.category == getCategory){
-                    if(findEqualObjects(item.typeMaterial,getTypes)){
-                        if(findEqualObjects(item.manufacturer,getFilters)){
-                            return {
-                                ...item
-                            }
-                        }
-                    }
+            const getCategoriesProducts = state.allProducts.map((item)=>{
+                if(item.category == getCategory) {
+                    return item
                 }
             }).filter((x) => {
                 return x !== undefined && x !== null
             })
-            state.filteredProducts = getProducts
+            const getFiltersProducts = getCategoriesProducts.length ? getCategoriesProducts.map((item)=>{
+                    return item.manufacturer.map((manufItem)=>{
+                        if(getFilters.indexOf(manufItem) !== -1){
+                            return item
+                        }
+                    })
+            }).flat(1).filter((x) => {
+                return x !== undefined && x !== null
+            }): []
+            if(firstLoad){
+                // Set product types
+                const newTypes =  getFiltersProducts.map(({typeMaterial})=>{
+                    return typeMaterial.map((item)=>{
+                        return {
+                            name: item,
+                            enable: false,
+                            id: stateHelper.generateId()
+                        }
+                    })
+
+                }).flat(1).filter((x) => {
+                    return x !== undefined && x !== null
+                })
+                state.productTypes = newTypes.filter((v,i,a)=>a.findIndex(t=>(t.name === v.name))===i)
+                if(state.productTypes.length){
+                    state.productTypes[0].enable = true
+                }
+            }
+            const getTypes = state.productTypes.map((item)=>{
+                if(item.enable){
+                    return item.name
+                }
+            }).filter((x) => {
+                return x !== undefined && x !== null
+            })
+            const getMaterial = getFiltersProducts.length ? getFiltersProducts.map((item)=>{
+                    return item.typeMaterial.map((material)=>{
+                        if(getTypes.indexOf(material) !== -1){
+                            return  {
+                                id: stateHelper.generateId(),
+                                ...item
+                            }
+                        }
+                    })
+            }).flat(1).filter((x) => {
+                return x !== undefined && x !== null
+            }):[]
+            if(getMaterial.length){
+                state.filteredProducts = getMaterial.filter((v,i,a)=>a.findIndex(t=>(t.id === v.id))===i)
+            } else  {
+                state.filteredProducts = []
+            }
         }
     },
+    // Set viewed materials
+    // SET_MATERIALS(state){
+    //     if(state.filteredProducts.length > 0){
+    //         state.productTypes = state.productTypes.filter((item)=>{
+    //             return state.filteredProducts.filter(({typeMaterial})=>{
+    //                 return typeMaterial.filter((type)=>{
+    //                     item.viewed = true
+    //                     return item
+    //                 })
+    //             })
+    //         })
+    //     }
+    // },
     // Change category
     CHANGE_CATEGORY(state,name){
-        state.idx = 0
-        state.productsToShow = 6
         state.categories = state.categories.map((item)=>{
             item.enable = false
             if(item.name == name){
@@ -140,8 +178,6 @@ export const mutations = {
     },
     // Change types
     CHANGE_TYPE(state,name){
-        state.idx = 0
-        state.productsToShow = 6
         state.productTypes = state.productTypes.map((item)=>{
             item.enable = false
             if(item.name == name){
@@ -188,10 +224,10 @@ export const mutations = {
     },
     //Animation
     run(state) {
-        if(state.filteredProducts.length && state.idx == 0){
-            console.log('run')
-            state.idx += ({ 0: 1, [state.filteredProducts.length]: -1 })[state.idx]
+        for(let i = 0;i<= state.filteredProducts.length;i++){
+            state.idx = i
         }
+
     },
     enter(state) {
         if(state.filteredProducts.length){
@@ -212,29 +248,36 @@ export const actions = {
     // Toggle filters
     TOGGLE_FILTERS({commit,dispatch},payload){
         commit('TOGGLE_FILTERS',payload)
-        dispatch('FILTER_PRODUCTS')
-        dispatch('run')
+        dispatch('FILTER_PRODUCTS',true)
+        // dispatch('SET_MATERIALS')
+        commit('run')
     },
     // Set catalog
     SET_CATALOG({commit,dispatch}, payload) {
         commit('SET_CATALOG',payload)
-        dispatch('FILTER_PRODUCTS')
+        dispatch('FILTER_PRODUCTS',true)
+        // dispatch('SET_MATERIALS')
     },
     // Generate filtered products
-    FILTER_PRODUCTS({commit}){
-        commit('FILTER_PRODUCTS')
+    FILTER_PRODUCTS({commit},payload){
+        commit('FILTER_PRODUCTS',payload)
     },
     //Change category
     CHANGE_CATEGORY({commit,dispatch},name){
         commit('CHANGE_CATEGORY',name)
-        dispatch('FILTER_PRODUCTS')
+        dispatch('FILTER_PRODUCTS',true)
+        // dispatch('SET_MATERIALS')
         dispatch('run')
     },
     // Change types
     CHANGE_TYPE({commit,dispatch},name) {
         commit('CHANGE_TYPE',name)
         dispatch('FILTER_PRODUCTS')
-        dispatch('run')
+        commit('run')
+    },
+    // Set materials
+    SET_MATERIALS({commit}){
+        commit('SET_MATERIALS')
     },
     // Animations
     //Animation
