@@ -225,7 +225,7 @@ export default {
                     } else {
                         this.thxMessage = response.message
                         this.mailSent = true
-                        this.$gtm.push({ event: this.id })
+                        this.$gtm.push({ event: this.modal.id })
                         setTimeout(()=>{
                             this.TOGGLE_MODAL({file: null,id:null,title:null,enable: false})
                             this.mailSent = false
